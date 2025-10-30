@@ -1,0 +1,56 @@
+export const colorStyles = {
+  green: {
+    border: "border-green-500/20",
+    hoverBorder: "hover:border-green-500",
+    bg: "bg-green-500/10",
+    text: "text-green-400",
+    hoverText: "hover:text-green-400", // direct hover on element
+    groupHoverText: "group-hover:text-green-400", // for elements inside group
+    shadow: "hover:shadow-green-500/10",
+  },
+  purple: {
+    border: "border-purple-500/20",
+    hoverBorder: "hover:border-purple-500",
+    bg: "bg-purple-500/10",
+    text: "text-purple-400",
+    hoverText: "hover:text-purple-400",
+    groupHoverText: "group-hover:text-purple-400",
+    shadow: "hover:shadow-purple-500/10",
+  },
+  pink: {
+    border: "border-pink-500/20",
+    hoverBorder: "hover:border-pink-500",
+    bg: "bg-pink-500/10",
+    text: "text-pink-400",
+    hoverText: "hover:text-pink-400",
+    groupHoverText: "group-hover:text-pink-400",
+    shadow: "hover:shadow-pink-500/10",
+  },
+  blue: {
+    border: "border-sky-500/20",
+    hoverBorder: "hover:border-sky-500",
+    bg: "bg-sky-500/10",
+    text: "text-sky-400",
+    hoverText: "hover:text-sky-400",
+    groupHoverText: "group-hover:text-sky-400",
+    shadow: "hover:shadow-sky-500/10",
+  },
+  amber: {
+    border: "border-amber-500/20",
+    hoverBorder: "hover:border-amber-500",
+    bg: "bg-amber-500/10",
+    text: "text-amber-400",
+    hoverText: "hover:text-amber-400",
+    groupHoverText: "group-hover:text-amber-400",
+    shadow: "hover:shadow-amber-500/10",
+  },
+  orange: {
+    border: "border-orange-500/20",
+    hoverBorder: "hover:border-orange-500",
+    bg: "bg-orange-500/10",
+    text: "text-orange-400",
+    hoverText: "hover:text-orange-400",
+    groupHoverText: "group-hover:text-orange-400",
+    shadow: "hover:shadow-orange-500/10",
+  },
+} as const;
