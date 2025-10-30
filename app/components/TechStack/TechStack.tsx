@@ -1,5 +1,12 @@
 import React from "react";
-import { Code2, Database, Layers, Server, PackageOpen } from "lucide-react";
+import {
+  Code2,
+  Database,
+  Layers,
+  Server,
+  PackageOpen,
+  BookOpen,
+} from "lucide-react";
 import {
   SiJavascript,
   SiTypescript,
@@ -23,6 +30,9 @@ import {
   SiJest,
   SiTailwindcss,
   SiShadcnui,
+  SiGo,
+  SiGraphql,
+  SiNestjs,
 } from "react-icons/si";
 
 type TechItem = {
@@ -114,6 +124,12 @@ const backendExpertise = [
   "Modern Development Tooling (TypeScript)",
 ];
 
+const currentlyLearning = [
+  { name: "GraphQL", Icon: SiGraphql },
+  { name: "NestJs", Icon: SiNestjs },
+  { name: "Go", Icon: SiGo },
+];
+
 const colorStyles = {
   green: {
     hoverBorder: "hover:border-green-500",
@@ -149,6 +165,13 @@ const colorStyles = {
     border: "border-amber-500/20",
     text: "text-amber-400",
     hoverText: "hover:text-amber-400",
+  },
+  orange: {
+    hoverBorder: "hover:border-orange-500",
+    bg: "bg-orange-500/10",
+    border: "border-orange-500/20",
+    text: "text-orange-400",
+    hoverText: "hover:text-orange-400",
   },
 } as const;
 
@@ -234,6 +257,24 @@ const TechStack = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        <div className="mt-12 border border-slate-800 bg-gradient-to-br from-slate-900/80 to-slate-900/40 p-8 rounded-xl">
+          <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+            <BookOpen className="text-orange-400" size={20} />
+            Currently Learning
+          </h3>
+          <div className="flex flex-wrap gap-4">
+            {currentlyLearning.map((item, idx) => (
+              <div
+                key={idx}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-orange-500/10 border border-orange-500/20 hover:border-orange-500 transition-all cursor-default"
+              >
+                <item.Icon className="text-orange-400" size={16} />
+                <span className="text-sm text-gray-300">{item.name}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
