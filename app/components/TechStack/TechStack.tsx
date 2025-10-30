@@ -1,10 +1,29 @@
 import React from "react";
-import { Code2, Database, Layers, Server } from "lucide-react";
+import { Code2, Database, Layers, Server, PackageOpen } from "lucide-react";
 import {
   SiJavascript,
   SiPython,
   SiTypescript,
   SiOpenjdk,
+  SiPostgresql,
+  SiMysql,
+  SiSqlite,
+  SiRedis,
+  SiDocker,
+  SiAmazon,
+  SiDigitalocean,
+  SiNginx,
+  SiHeroku,
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiExpress,
+  SiHono,
+  SiPrisma,
+  SiJsonwebtokens,
+  SiJest,
+  SiTailwindcss,
+  SiShadcnui,
 } from "react-icons/si";
 
 type TechItem = {
@@ -28,19 +47,42 @@ const techData: TechCard[] = [
     items: [
       { name: "JavaScript", color: "green", Icon: SiJavascript },
       { name: "Node.js / TypeScript", color: "green", Icon: SiTypescript },
+      { name: "Node.js", color: "green", Icon: SiNodedotjs },
       { name: "Java", color: "green", Icon: SiOpenjdk },
     ],
   },
   {
+    title: "Frameworks",
+    color: "purple",
+    icon: Layers,
+    items: [
+      { name: "React", color: "purple", Icon: SiReact },
+      { name: "Next.js", color: "purple", Icon: SiNextdotjs },
+      { name: "Express", color: "purple", Icon: SiExpress },
+      { name: "Hono", color: "purple", Icon: SiHono },
+    ],
+  },
+  {
+    title: "Libraries",
+    color: "pink",
+    icon: PackageOpen,
+    items: [
+      { name: "Prisma", color: "pink", Icon: SiPrisma },
+      { name: "JWT", color: "pink", Icon: SiJsonwebtokens },
+      { name: "Jest", color: "pink", Icon: SiJest },
+      { name: "Tailwind CSS", color: "pink", Icon: SiTailwindcss },
+      { name: "Shadcn", color: "pink", Icon: SiShadcnui },
+    ],
+  },
+  {
     title: "Databases",
-    color: "cyan",
+    color: "blue",
     icon: Database,
     items: [
-      { name: "PostgreSQL", color: "cyan" },
-      { name: "MongoDB", color: "cyan" },
-      { name: "Redis", color: "cyan" },
-      { name: "Elasticsearch", color: "cyan" },
-      { name: "Cassandra", color: "cyan" },
+      { name: "PostgreSQL", color: "blue", Icon: SiPostgresql },
+      { name: "MySQL", color: "blue", Icon: SiMysql },
+      { name: "SQLite", color: "blue", Icon: SiSqlite },
+      { name: "Redis", color: "blue", Icon: SiRedis },
     ],
   },
   {
@@ -48,11 +90,11 @@ const techData: TechCard[] = [
     color: "amber",
     icon: Server,
     items: [
-      { name: "Docker / Kubernetes", color: "amber" },
-      { name: "AWS / GCP", color: "amber" },
-      { name: "Terraform", color: "amber" },
-      { name: "GitHub Actions", color: "amber" },
-      { name: "Nginx", color: "amber" },
+      { name: "Docker", color: "amber", Icon: SiDocker },
+      { name: "AWS", color: "amber", Icon: SiAmazon },
+      { name: "Digital Ocean", color: "amber", Icon: SiDigitalocean },
+      { name: "Nginx", color: "amber", Icon: SiNginx },
+      { name: "Heroku", color: "amber", Icon: SiHeroku },
     ],
   },
 ];
@@ -65,6 +107,44 @@ const coreExpertise = [
   "DevOps & Cloud Infrastructure",
   "Performance Tuning & Monitoring",
 ];
+
+const colorStyles = {
+  green: {
+    hoverBorder: "hover:border-green-500",
+    bg: "bg-green-500/10",
+    border: "border-green-500/20",
+    text: "text-green-400",
+    hoverText: "hover:text-green-400",
+  },
+  purple: {
+    hoverBorder: "hover:border-purple-500",
+    bg: "bg-purple-500/10",
+    border: "border-purple-500/20",
+    text: "text-purple-400",
+    hoverText: "hover:text-purple-400",
+  },
+  pink: {
+    hoverBorder: "hover:border-pink-500",
+    bg: "bg-pink-500/10",
+    border: "border-pink-500/20",
+    text: "text-pink-400",
+    hoverText: "hover:text-pink-400",
+  },
+  blue: {
+    hoverBorder: "hover:border-sky-500",
+    bg: "bg-sky-500/10",
+    border: "border-sky-500/20",
+    text: "text-sky-400",
+    hoverText: "hover:text-sky-400",
+  },
+  amber: {
+    hoverBorder: "hover:border-amber-500",
+    bg: "bg-amber-500/10",
+    border: "border-amber-500/20",
+    text: "text-amber-400",
+    hoverText: "hover:text-amber-400",
+  },
+} as const;
 
 const TechStack = () => {
   return (
@@ -81,38 +161,42 @@ const TechStack = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {techData.map((card) => (
-            <div
-              key={card.title}
-              className={`border border-slate-800 bg-slate-900/50 p-6 rounded-xl hover:border-${card.color}-500 transition-all`}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div
-                  className={`p-2 rounded-lg bg-${card.color}-500/10 border border-${card.color}-500/20`}
-                >
-                  <card.icon className={`text-${card.color}-400`} size={20} />
-                </div>
-                <h3 className="text-lg font-bold">{card.title}</h3>
-              </div>
-
-              <ul className="space-y-3 text-sm text-gray-400">
-                {card.items.map((item) => (
-                  <li
-                    key={item.name}
-                    className={`flex items-center gap-2 hover:text-${item.color}-400 transition-colors cursor-default`}
+          {techData.map((card) => {
+            const styles = colorStyles[card.color as keyof typeof colorStyles];
+            return (
+              <div
+                key={card.title}
+                className={`border border-slate-800 bg-slate-900/50 p-6 rounded-xl ${styles.hoverBorder} transition-all`}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div
+                    className={`p-2 rounded-lg ${styles.bg} border ${styles.border}`}
                   >
-                    {item.Icon && (
-                      <item.Icon
-                        className={`text-${item.color}-400`}
-                        size={16}
-                      />
-                    )}
-                    {item.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                    <card.icon className={styles.text} size={20} />
+                  </div>
+                  <h3 className="text-lg font-bold">{card.title}</h3>
+                </div>
+
+                <ul className="space-y-3 text-sm text-gray-400">
+                  {card.items.map((item) => {
+                    const itemStyles =
+                      colorStyles[item.color as keyof typeof colorStyles];
+                    return (
+                      <li
+                        key={item.name}
+                        className={`flex items-center gap-2 ${itemStyles.hoverText} transition-colors cursor-default`}
+                      >
+                        {item.Icon && (
+                          <item.Icon className={itemStyles.text} size={16} />
+                        )}
+                        {item.name}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            );
+          })}
         </div>
 
         <div className="mt-12 border border-slate-800 bg-gradient-to-br from-slate-900/80 to-slate-900/40 p-8 rounded-xl">
