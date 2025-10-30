@@ -1,6 +1,6 @@
 import React from "react";
-import IntroSection from "./components/Header/IntroSection";
-import TechStack from "./components/TechStack/TechStack";
+import IntroSection from "./components/home/IntroSection";
+import TechStack from "./components/home/TechStack";
 
 const page = () => {
   return (

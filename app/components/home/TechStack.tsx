@@ -1,11 +1,11 @@
 import { Code2, Server, BookOpen } from "lucide-react";
-import { colorStyles } from "../Color/colorStyles";
+import { colorStyles } from "../../lib/colorStyles";
 import {
   backendExpertise,
   currentlyLearning,
   frontendExpertise,
   techData,
-} from "./techData";
+} from "./skills";
 
 const TechStack = () => {
   return (

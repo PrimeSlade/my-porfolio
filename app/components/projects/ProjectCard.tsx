@@ -1,4 +1,4 @@
-import { colorStyles } from "../Color/colorStyles";
+import { colorStyles } from "../../lib/colorStyles";
 import { Project } from "./projects";
 import { GitBranch } from "lucide-react";
 
