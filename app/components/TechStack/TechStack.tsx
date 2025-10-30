@@ -2,7 +2,6 @@ import React from "react";
 import { Code2, Database, Layers, Server, PackageOpen } from "lucide-react";
 import {
   SiJavascript,
-  SiPython,
   SiTypescript,
   SiOpenjdk,
   SiPostgresql,
@@ -20,7 +19,7 @@ import {
   SiExpress,
   SiHono,
   SiPrisma,
-  SiJsonwebtokens,
+  SiReactquery,
   SiJest,
   SiTailwindcss,
   SiShadcnui,
@@ -68,7 +67,7 @@ const techData: TechCard[] = [
     icon: PackageOpen,
     items: [
       { name: "Prisma", color: "pink", Icon: SiPrisma },
-      { name: "JWT", color: "pink", Icon: SiJsonwebtokens },
+      { name: "TanStack Query", color: "pink", Icon: SiReactquery },
       { name: "Jest", color: "pink", Icon: SiJest },
       { name: "Tailwind CSS", color: "pink", Icon: SiTailwindcss },
       { name: "Shadcn", color: "pink", Icon: SiShadcnui },
@@ -99,13 +98,20 @@ const techData: TechCard[] = [
   },
 ];
 
-const coreExpertise = [
+const frontendExpertise = [
+  "React & Next.js Development",
+  "Responsive UI Design",
+  "Modern CSS (Tailwind, CSS-in-JS)",
+  "TanStack Query (React Query)",
+];
+
+const backendExpertise = [
   "System Design & Architecture",
-  "API Development (REST, GraphQL, gRPC)",
+  "API Development (RESTful)",
   "Database Optimization & Scaling",
-  "Microservices & Event-Driven Systems",
-  "DevOps & Cloud Infrastructure",
-  "Performance Tuning & Monitoring",
+  "Authentication & Authorization",
+  "DevOps & CI/CD (Docker, CircleCI)",
+  "Modern Development Tooling (TypeScript)",
 ];
 
 const colorStyles = {
@@ -199,18 +205,35 @@ const TechStack = () => {
           })}
         </div>
 
-        <div className="mt-12 border border-slate-800 bg-gradient-to-br from-slate-900/80 to-slate-900/40 p-8 rounded-xl">
-          <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-            <Layers className="text-green-400" size={20} />
-            Core Expertise
-          </h3>
-          <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-400">
-            {coreExpertise.map((expert, idx) => (
-              <div key={idx} className="flex items-start gap-3">
-                <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2"></div>
-                <p>{expert}</p>
-              </div>
-            ))}
+        <div className="mt-12 grid md:grid-cols-2 gap-6">
+          <div className="border border-slate-800 bg-gradient-to-br from-slate-900/80 to-slate-900/40 p-8 rounded-xl">
+            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+              <Code2 className="text-purple-400" size={20} />
+              Frontend Expertise
+            </h3>
+            <div className="space-y-4 text-sm text-gray-400">
+              {frontendExpertise.map((expert, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2"></div>
+                  <p>{expert}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="border border-slate-800 bg-gradient-to-br from-slate-900/80 to-slate-900/40 p-8 rounded-xl">
+            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+              <Server className="text-green-400" size={20} />
+              Backend Expertise
+            </h3>
+            <div className="space-y-4 text-sm text-gray-400">
+              {backendExpertise.map((expert, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2"></div>
+                  <p>{expert}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
