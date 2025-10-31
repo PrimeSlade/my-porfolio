@@ -1,5 +1,7 @@
+import { Clock } from "lucide-react";
 import ProjectCard from "../components/projects/ProjectCard";
 import { projects } from "../components/projects/projects";
+import TimeLine from "../components/projects/TimeLine";
 
 const ProjectPage = () => {
   return (
@@ -12,11 +14,26 @@ const ProjectPage = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} {...project} />
-          ))}
-        </div>
+        <section className="flex gap-10">
+          <div className="w-[80%] space-y-6">
+            {projects.map((project) => (
+              <ProjectCard {...project} key={project.id} />
+            ))}
+          </div>
+          <div className="w-[20%] sticky top-24 self-start">
+            <div className="flex items-center gap-2 mb-6">
+              <Clock className="text-gray-400" size={16} />
+              <h3 className="text-md uppercase tracking-wider font-bold">
+                Project Timeline
+              </h3>
+            </div>
+            <div className="space-y-5 px-6">
+              {projects.map((project) => (
+                <TimeLine {...project} key={project.id} />
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
     </section>
   );

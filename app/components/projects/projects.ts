@@ -27,6 +27,7 @@ export type Project = {
   color: "green" | "blue" | "amber";
   description: string;
   tech: Tech[];
+  date: string;
 };
 
 export const projects: Project[] = [
@@ -43,6 +44,7 @@ export const projects: Project[] = [
       { name: "Redis", icon: SiRedis },
       { name: "Docker", icon: SiDocker },
     ],
+    date: "Jul 2025",
   },
   {
     id: 2,
@@ -57,6 +59,7 @@ export const projects: Project[] = [
       { name: "PostgreSQL", icon: SiPostgresql },
       { name: "RabbitMQ", icon: SiRabbitmq },
     ],
+    date: "Apr 2025",
   },
   {
     id: 3,
@@ -71,6 +74,7 @@ export const projects: Project[] = [
       { name: "FastAPI", icon: SiFastapi },
       { name: "MongoDB", icon: SiMongodb },
     ],
+    date: "Feb 2025",
   },
   {
     id: 4,
@@ -85,5 +89,6 @@ export const projects: Project[] = [
       { name: "Terraform", icon: SiTerraform },
       { name: "AWS", icon: SiAmazon },
     ],
+    date: "Dec 2025",
   },
 ];
