@@ -1,6 +1,7 @@
+import Link from "next/link";
 import { colorStyles } from "../../lib/colorStyles";
 import { Project } from "./projects";
-import { GitBranch } from "lucide-react";
+import { GitBranch, ExternalLink, KeyRound } from "lucide-react";
 
 const ProjectCard = ({
   title,
@@ -9,6 +10,9 @@ const ProjectCard = ({
   description,
   tech,
   icon: Icon,
+  repositories,
+  demo,
+  demoCredentials,
 }: Project) => {
   const styles =
     colorStyles[color as keyof typeof colorStyles] || colorStyles.blue;
@@ -51,15 +55,66 @@ const ProjectCard = ({
         ))}
       </div>
 
-      {/* Repository Link */}
-      <div
-        className={`flex items-center gap-2 text-sm text-gray-500 transition-colors ${styles.groupHoverText}`}
-      >
-        <span>View repository</span>
-        <span className="transform group-hover:translate-x-1 transition-transform">
-          →
-        </span>
-      </div>
+      {/* Repository Links */}
+      {repositories && repositories.length > 0 && (
+        <div className="flex flex-wrap gap-3 mb-4">
+          {repositories.map((repo) => (
+            <Link
+              key={repo.label}
+              href={repo.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center gap-2 text-sm text-gray-500 transition-colors ${styles.groupHoverText}`}
+            >
+              <span>{repo.label}</span>
+              <span className="transform group-hover:translate-x-1 transition-transform">
+                →
+              </span>
+            </Link>
+          ))}
+        </div>
+      )}
+
+      {/* Demo Link */}
+      {demo && (
+        <div className="mb-3">
+          <Link
+            href={demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-flex items-center gap-2 text-sm font-medium transition-colors ${styles.groupHoverText}`}
+          >
+            <ExternalLink size={14} />
+            <span>Live Demo</span>
+          </Link>
+        </div>
+      )}
+
+      {/* Demo Credentials */}
+      {demoCredentials && (
+        <div className="bg-slate-800/40 border border-slate-700/50 rounded-lg p-3">
+          <div className="flex items-center gap-2 mb-2">
+            <KeyRound size={14} className="text-gray-500" />
+            <span className="text-xs font-medium text-gray-400">
+              Demo Credentials
+            </span>
+          </div>
+          <div className="space-y-1 text-xs text-gray-500">
+            <div>
+              <span className="text-gray-400">Username:</span>{" "}
+              <code className="text-gray-300 bg-slate-900/50 px-2 py-0.5 rounded">
+                {demoCredentials.username}
+              </code>
+            </div>
+            <div>
+              <span className="text-gray-400">Password:</span>{" "}
+              <code className="text-gray-300 bg-slate-900/50 px-2 py-0.5 rounded">
+                {demoCredentials.password}
+              </code>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -11,6 +11,12 @@ import {
   SiKubernetes,
   SiTerraform,
   SiAmazon,
+  SiTypescript,
+  SiExpress,
+  SiReact,
+  SiPrisma,
+  SiZod,
+  SiShadcnui,
 } from "react-icons/si";
 import { LucideIcon, User, Users } from "lucide-react";
 
@@ -28,23 +34,51 @@ export type Project = {
   description: string;
   tech: Tech[];
   date: string;
+  demo?: string;
+  demoCredentials?: {
+    username: string;
+    password: string;
+  };
+  repositories?: { label: string; url: string }[];
 };
 
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Distributed Cache System",
-    status: "Active",
+    title: "Medical Clinic POS System",
+    status: "Production",
     icon: User,
     color: "green",
     description:
-      "High-performance caching layer using Redis clusters. Reduced API response time by 70% and improved system throughput by 3x.",
+      "A full-stack healthcare Point-of-Sale and management system designed for medical clinics and pharmacies. The platform improves operational efficiency through attribute-based access control (ABAC), multi-unit inventory tracking, patient record management, treatment documentation, dynamic invoicing, expense tracking, and financial reporting.",
     tech: [
-      { name: "Go", icon: SiGo },
-      { name: "Redis", icon: SiRedis },
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Express", icon: SiExpress },
+      { name: "React", icon: SiReact },
+      { name: "Prisma", icon: SiPrisma },
+      { name: "PostgreSQL", icon: SiPostgresql },
+      { name: "TanStack", icon: SiReact },
+      { name: "Shadcn", icon: SiShadcnui },
       { name: "Docker", icon: SiDocker },
+      { name: "Zod", icon: SiZod },
     ],
     date: "Jul 2025",
+    demo: "https://medpos.primeslade.dev",
+    demoCredentials: {
+      username: "sai@email.com",
+      password: "111111",
+    },
+    repositories: [
+      {
+        label: "Frontend",
+        url: "https://github.com/PrimeSlade/Point-Of-Sale-Frontend",
+      },
+      {
+        label: "Backend",
+        url: "https://github.com/PrimeSlade/Point-Of-Sale-Backend",
+      },
+    ],
   },
   {
     id: 2,
@@ -60,6 +94,13 @@ export const projects: Project[] = [
       { name: "RabbitMQ", icon: SiRabbitmq },
     ],
     date: "Apr 2025",
+    repositories: [
+      { label: "API Gateway", url: "https://github.com/username/api-gateway" },
+      {
+        label: "Auth Service",
+        url: "https://github.com/username/auth-service",
+      },
+    ],
   },
   {
     id: 3,
@@ -75,6 +116,9 @@ export const projects: Project[] = [
       { name: "MongoDB", icon: SiMongodb },
     ],
     date: "Feb 2025",
+    repositories: [
+      { label: "Framework", url: "https://github.com/username/api-framework" },
+    ],
   },
   {
     id: 4,
@@ -90,5 +134,12 @@ export const projects: Project[] = [
       { name: "AWS", icon: SiAmazon },
     ],
     date: "Dec 2025",
+    repositories: [
+      {
+        label: "Infrastructure",
+        url: "https://github.com/username/terraform-infra",
+      },
+      { label: "K8s Configs", url: "https://github.com/username/k8s-configs" },
+    ],
   },
 ];
