@@ -17,6 +17,9 @@ const ProjectPage = () => {
     setActiveProject(null);
   };
 
+  // Get unique dates for timeline
+  const uniqueDates = Array.from(new Set(projects.map((p) => p.date)));
+
   return (
     <section id="projects" className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
@@ -47,13 +50,21 @@ const ProjectPage = () => {
               </h3>
             </div>
             <div className="space-y-5 px-6">
-              {projects.map((project) => (
-                <TimeLine
-                  {...project}
-                  key={project.id}
-                  active={activeProject === project.id}
-                />
-              ))}
+              {uniqueDates.map((date) => {
+                const projectsWithDate = projects.filter(
+                  (p) => p.date === date
+                );
+                const isActive = projectsWithDate.some(
+                  (p) => p.id === activeProject
+                );
+                return (
+                  <TimeLine
+                    {...projectsWithDate[0]}
+                    key={date}
+                    active={isActive}
+                  />
+                );
+              })}
             </div>
           </div>
         </section>

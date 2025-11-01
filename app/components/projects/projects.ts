@@ -1,13 +1,7 @@
 import {
-  SiGo,
-  SiRedis,
   SiDocker,
   SiNodedotjs,
   SiPostgresql,
-  SiRabbitmq,
-  SiPython,
-  SiFastapi,
-  SiMongodb,
   SiKubernetes,
   SiTerraform,
   SiAmazon,
@@ -17,6 +11,15 @@ import {
   SiPrisma,
   SiZod,
   SiShadcnui,
+  SiMysql,
+  SiCloudinary,
+  SiGooglegemini,
+  SiRepublicofgamers,
+  SiHonda,
+  SiHono,
+  SiJavascript,
+  SiReactquery,
+  SiSqlite,
 } from "react-icons/si";
 import { LucideIcon, User, Users } from "lucide-react";
 
@@ -30,7 +33,7 @@ export type Project = {
   title: string;
   status: string;
   icon: LucideIcon;
-  color: "green" | "blue" | "amber";
+  color: "green" | "blue" | "amber" | "cyan" | string;
   description: string;
   tech: Tech[];
   date: string;
@@ -52,13 +55,13 @@ export const projects: Project[] = [
     description:
       "A full-stack healthcare Point-of-Sale and management system designed for medical clinics and pharmacies. The platform improves operational efficiency through attribute-based access control (ABAC), multi-unit inventory tracking, patient record management, treatment documentation, dynamic invoicing, expense tracking, and financial reporting.",
     tech: [
-      { name: "Node.js", icon: SiNodedotjs },
-      { name: "TypeScript", icon: SiTypescript },
-      { name: "Express", icon: SiExpress },
       { name: "React", icon: SiReact },
+      { name: "Express", icon: SiExpress },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Node.js", icon: SiNodedotjs },
       { name: "Prisma", icon: SiPrisma },
       { name: "PostgreSQL", icon: SiPostgresql },
-      { name: "TanStack", icon: SiReact },
+      { name: "TanStack", icon: SiReactquery },
       { name: "Shadcn", icon: SiShadcnui },
       { name: "Docker", icon: SiDocker },
       { name: "Zod", icon: SiZod },
@@ -82,64 +85,84 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Microservices Platform",
-    status: "Production",
-    icon: User,
-    color: "blue",
+    title: "Respectfully Rude",
+    status: "Stable",
+    icon: Users,
+    color: "purple",
     description:
-      "Event-driven architecture handling 10M+ requests per day with 99.9% uptime. Fully containerized and orchestrated.",
+      "Respectfully Rude is a hackathon project where I led a team of three to build a full-stack app that generates AI-powered backhanded compliments and roast images. Built with React and Node.js/Hono, it uses Google's Gemini AI to create sarcastic compliments and Replicate's Flux model to generate cartoon-style roast images based on user photos, complete with authentication and cloud storage.",
     tech: [
+      { name: "React", icon: SiReact },
+      { name: "Hono", icon: SiHono },
+      { name: "JavaScript", icon: SiJavascript },
+      { name: "TypeScript", icon: SiTypescript },
       { name: "Node.js", icon: SiNodedotjs },
-      { name: "PostgreSQL", icon: SiPostgresql },
-      { name: "RabbitMQ", icon: SiRabbitmq },
+      { name: "MySQL", icon: SiMysql },
+      { name: "Prisma", icon: SiPrisma },
+      { name: "Shadcn", icon: SiShadcnui },
+      { name: "Cloudinary", icon: SiCloudinary },
+      { name: "Gemini", icon: SiGooglegemini },
     ],
-    date: "Apr 2025",
+    date: "May 2025",
     repositories: [
-      { label: "API Gateway", url: "https://github.com/username/api-gateway" },
       {
-        label: "Auth Service",
-        url: "https://github.com/username/auth-service",
+        label: "Full Stack",
+        url: "https://github.com/PrimeSlade/hackathon-respectfully-rude",
       },
     ],
   },
   {
     id: 3,
-    title: "REST API Framework",
+    title: "Zen Plan",
     status: "Stable",
     icon: Users,
     color: "amber",
     description:
-      "Lightweight framework with built-in validation, authentication, and rate limiting. Used across multiple production systems.",
+      "A full-stack wellness planning application that helps users build healthy lifestyle routines through a structured weekly calendar. It features JWT authentication, customizable wellness activities (yoga, meditation, exercise, meal prep), category-based task organization, and progress tracking to promote holistic physical, mental, and emotional well-being.",
     tech: [
-      { name: "Python", icon: SiPython },
-      { name: "FastAPI", icon: SiFastapi },
-      { name: "MongoDB", icon: SiMongodb },
+      { name: "React", icon: SiReact },
+      { name: "Hono", icon: SiHono },
+      { name: "JavaScript", icon: SiJavascript },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "MySQL", icon: SiMysql },
+      { name: "Prisma", icon: SiPrisma },
+      { name: "Shadcn", icon: SiShadcnui },
+      { name: "Cloudinary", icon: SiCloudinary },
     ],
-    date: "Feb 2025",
+    date: "May 2025",
     repositories: [
-      { label: "Framework", url: "https://github.com/username/api-framework" },
+      {
+        label: "Full Stack",
+        url: "https://github.com/PrimeSlade/zen-plan-group-project",
+      },
     ],
   },
   {
     id: 4,
-    title: "CI/CD Pipeline Automation",
-    status: "Active",
+    title: "AI Hub",
+    status: "Stable",
     icon: Users,
     color: "blue",
     description:
-      "Automated deployment pipeline reducing deployment time from hours to minutes. Infrastructure as code with full observability.",
+      "AI Hub is a full-stack e-learning platform designed for AI education that enables instructors to create and manage courses while students can discover and enroll in AI-related content. The platform includes JWT-based authentication, email verification, profile management with picture uploads, and comprehensive course CRUD operations with search and sorting capabilities.",
     tech: [
-      { name: "Kubernetes", icon: SiKubernetes },
-      { name: "Terraform", icon: SiTerraform },
-      { name: "AWS", icon: SiAmazon },
+      { name: "React", icon: SiReact },
+      { name: "Hono", icon: SiHono },
+      { name: "JavaScript", icon: SiJavascript },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "SQLite", icon: SiSqlite },
+      { name: "Prisma", icon: SiPrisma },
+      { name: "Shadcn", icon: SiShadcnui },
+      { name: "Cloudinary", icon: SiCloudinary },
     ],
-    date: "Dec 2025",
+    date: "April 2025",
     repositories: [
       {
-        label: "Infrastructure",
-        url: "https://github.com/username/terraform-infra",
+        label: "Full Stack",
+        url: "https://github.com/PrimeSlade/ai-hub-group-project",
       },
-      { label: "K8s Configs", url: "https://github.com/username/k8s-configs" },
     ],
   },
 ];
