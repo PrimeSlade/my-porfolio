@@ -4,7 +4,7 @@ import TechStack from "./components/home/TechStack";
 
 const page = () => {
   return (
-    <main>
+    <main className="space-y-20">
       <IntroSection />
       <TechStack />
     </main>
