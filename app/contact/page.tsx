@@ -1,4 +1,5 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { SiLeetcode, SiGithub, SiLinkedin, SiGmail } from "react-icons/si";
+import { Download, Phone } from "lucide-react";
 import React from "react";
 
 const ContactPage = () => {
@@ -27,24 +28,39 @@ const ContactPage = () => {
             technical challenges and building products that make a difference.
           </p>
 
-          <div className="space-y-4 mb-8">
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <a
-              href="mailto:engineer@example.com"
+              href="mailto:saib6064@gmail.com"
               className="inline-flex items-center gap-3 px-6 py-3 bg-green-500/10 border border-green-500/20 rounded-lg text-gray-300 hover:text-green-400 hover:border-green-500/40 transition-all group"
             >
-              <Mail size={20} />
+              <SiGmail size={20} />
               <span>saib6064@gmail.com</span>
+            </a>
+            <a
+              href="tel:+66970184800"
+              className="inline-flex items-center gap-3 px-6 py-3 bg-green-500/10 border border-green-500/20 rounded-lg text-gray-300 hover:text-green-400 hover:border-green-500/40 transition-all group"
+            >
+              <Phone size={20} />
+              <span>+66 97 018 4800</span>
+            </a>
+            <a
+              href="/resume.pdf"
+              download
+              className="inline-flex items-center gap-3 px-6 py-3 bg-green-500/10 border border-green-500/20 rounded-lg text-gray-300 hover:text-green-400 hover:border-green-500/40 transition-all group"
+            >
+              <Download size={20} />
+              <span>Download Resume</span>
             </a>
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4">
             <a
               href="https://github.com/PrimeSlade"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-lg bg-slate-800/50 border border-slate-700 text-gray-400 hover:text-green-400 hover:border-green-500/40 transition-all"
             >
-              <Github size={20} />
+              <SiGithub size={20} />
             </a>
             <a
               href="https://www.linkedin.com/in/sai-zayar-hein-863232352/"
@@ -52,7 +68,15 @@ const ContactPage = () => {
               rel="noopener noreferrer"
               className="p-3 rounded-lg bg-slate-800/50 border border-slate-700 text-gray-400 hover:text-green-400 hover:border-green-500/40 transition-all"
             >
-              <Linkedin size={20} />
+              <SiLinkedin size={20} />
+            </a>
+            <a
+              href="https://leetcode.com/u/Sladeee/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-lg bg-slate-800/50 border border-slate-700 text-gray-400 hover:text-green-400 hover:border-green-500/40 transition-all"
+            >
+              <SiLeetcode size={20} />
             </a>
           </div>
         </div>

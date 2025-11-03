@@ -4,7 +4,7 @@ import { TypeAnimation } from "react-type-animation";
 
 const IntroSection = () => {
   return (
-    <section className="pt-32 pb-20 px-6 relative overflow-hidden">
+    <section className="pt-32 px-6 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/20 via-transparent to-transparent"></div>
       <div className="max-w-5xl mx-auto relative">
         <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
