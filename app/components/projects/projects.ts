@@ -2,9 +2,6 @@ import {
   SiDocker,
   SiNodedotjs,
   SiPostgresql,
-  SiKubernetes,
-  SiTerraform,
-  SiAmazon,
   SiTypescript,
   SiExpress,
   SiReact,
@@ -14,12 +11,11 @@ import {
   SiMysql,
   SiCloudinary,
   SiGooglegemini,
-  SiRepublicofgamers,
-  SiHonda,
   SiHono,
   SiJavascript,
   SiReactquery,
   SiSqlite,
+  SiKnexdotjs,
 } from "react-icons/si";
 import { LucideIcon, User, Users } from "lucide-react";
 
@@ -162,6 +158,30 @@ export const projects: Project[] = [
       {
         label: "Full Stack",
         url: "https://github.com/PrimeSlade/ai-hub-group-project",
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "Expense Tracker",
+    status: "Stable",
+    icon: User,
+    color: "orange",
+    description:
+      " Node.js/Express backend API for an expense tracking application. Uses PostgreSQL with Knex.js for database management, and includes user authentication with JWT tokens and bcrypt password hashing. The API supports CRUD operations for expense tracking, user management, and list operations, with secure cookie-based authentication and image upload capabilities via Cloudinary integration.",
+    tech: [
+      { name: "Express", icon: SiExpress },
+      { name: "JavaScript", icon: SiJavascript },
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "PostgreSQL", icon: SiPostgresql },
+      { name: "Knex", icon: SiKnexdotjs },
+      { name: "Cloudinary", icon: SiCloudinary },
+    ],
+    date: "March 2025",
+    repositories: [
+      {
+        label: "Backend",
+        url: "https://github.com/PrimeSlade/Expense-Tracker-Back-End",
       },
     ],
   },
