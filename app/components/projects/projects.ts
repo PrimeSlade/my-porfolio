@@ -133,6 +133,7 @@ export const projects: Project[] = [
         url: "https://github.com/PrimeSlade/zen-plan-group-project",
       },
     ],
+    demo: "https://zenplan.primeslade.dev",
   },
   {
     id: 4,
