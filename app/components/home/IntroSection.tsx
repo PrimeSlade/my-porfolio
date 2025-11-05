@@ -5,7 +5,7 @@ import { TypeAnimation } from "react-type-animation";
 const IntroSection = () => {
   return (
     <section className="pt-32 px-6 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/20 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 from-emerald-950/20 via-transparent to-transparent"></div>
       <div className="max-w-5xl mx-auto relative">
         <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
           <TypeAnimation
@@ -17,17 +17,14 @@ const IntroSection = () => {
           />
         </h1>
         <p className="text-xl text-gray-400 leading-relaxed max-w-3xl mb-8 font-mono whitespace-pre-wrap">
-          <TypeAnimation
-            sequence={[
-              `Full Stack Software Engineer with backend expertise, proficient in JavaScript/TypeScript, Java, React, and Node.js frameworks including Express and Hono.\n
-Passionate about building scalable systems, optimizing databases, and architecting robust APIs.\n
-Happy to work in backend fields, with strong interests in distributed systems, microservices, and system design.`,
-            ]}
-            speed={88}
-            cursor={true}
-            repeat={0}
-            style={{ display: "inline-block" }}
-          />
+          <p>
+            Full Stack Software Engineer with backend expertise, proficient in
+            JavaScript/TypeScript, Java, React, and Node.js frameworks including
+            Express and Hono. Passionate about building scalable systems,
+            optimizing databases, and architecting robust APIs. Happy to work in
+            backend fields, with strong interests in distributed systems,
+            microservices, and system design.
+          </p>
         </p>
 
         <div className="flex flex-wrap gap-4 text-sm">
