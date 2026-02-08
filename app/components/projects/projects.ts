@@ -16,8 +16,12 @@ import {
   SiReactquery,
   SiSqlite,
   SiKnexdotjs,
+  SiNextdotjs,
+  SiNestjs,
+  SiSocketdotio,
+  SiRedis,
 } from "react-icons/si";
-import { LucideIcon, User, Users } from "lucide-react";
+import { LucideIcon, User, Users, Shield } from "lucide-react";
 
 export type Tech = {
   name: string;
@@ -29,7 +33,18 @@ export type Project = {
   title: string;
   status: string;
   icon: LucideIcon;
-  color: "green" | "blue" | "amber" | "cyan" | string;
+  color:
+    | "green"
+    | "blue"
+    | "amber"
+    | "cyan"
+    | "purple"
+    | "pink"
+    | "orange"
+    | "red"
+    | "indigo"
+    | "teal"
+    | string;
   description: string;
   tech: Tech[];
   date: string;
@@ -44,6 +59,36 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: 1,
+    title: "Slade Chat",
+    status: "Development",
+    icon: User,
+    color: "indigo",
+    description:
+      "A real-time messaging platform built with Next.js and NestJS that enables users to connect through friend management, direct messaging, and group chat rooms. Features Socket.IO for instant message delivery, Better Auth for secure authentication, and a Redis-based presence system for tracking online/offline status and last-seen timestamps.",
+    tech: [
+      { name: "Next.js", icon: SiNextdotjs },
+      { name: "NestJS", icon: SiNestjs },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "Socket.IO", icon: SiSocketdotio },
+      { name: "PostgreSQL", icon: SiPostgresql },
+      { name: "Redis", icon: SiRedis },
+      { name: "Prisma", icon: SiPrisma },
+      { name: "Better Auth", icon: Shield },
+      { name: "TanStack", icon: SiReactquery },
+      { name: "Shadcn", icon: SiShadcnui },
+      { name: "Zod", icon: SiZod },
+    ],
+    date: "Jan 2026",
+    repositories: [
+      {
+        label: "Full Stack",
+        url: "https://github.com/PrimeSlade/slade-chat",
+      },
+    ],
+  },
+  {
+    id: 2,
     title: "Medical Clinic POS System",
     status: "Production",
     icon: User,
@@ -80,7 +125,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: "Respectfully Rude",
     status: "Stable",
     icon: Users,
@@ -108,7 +153,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: "Zen Plan",
     status: "Stable",
     icon: Users,
@@ -136,7 +181,7 @@ export const projects: Project[] = [
     demo: "https://zenplan.primeslade.dev",
   },
   {
-    id: 4,
+    id: 5,
     title: "AI Hub",
     status: "Stable",
     icon: Users,
@@ -163,7 +208,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     title: "Expense Tracker",
     status: "Stable",
     icon: User,

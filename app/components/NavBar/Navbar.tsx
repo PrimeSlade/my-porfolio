@@ -16,22 +16,8 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-gray-950/90 backdrop-blur-sm border-b border-gray-800 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <div
-              className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"
-              style={{ animationDelay: "0.3s" }}
-            ></div>
-            <div
-              className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"
-              style={{ animationDelay: "0.6s" }}
-            ></div>
-          </div>
-        </div>
-
+    <nav className="fixed top-0 w-full bg-gray-950/90 backdrop-blur-sm border-b border-gray-700/50 z-50">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-end md:justify-evenly">
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-8 text-lg">
           {links.map((link) => {
@@ -76,7 +62,9 @@ const Navbar = () => {
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className={`transition-all text-lg transform ${
-                  isOpen ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
+                  isOpen
+                    ? "translate-y-0 opacity-100"
+                    : "-translate-y-2 opacity-0"
                 } ${
                   isActive
                     ? "text-green-400"

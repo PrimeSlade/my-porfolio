@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Sai Zayar Hein",
-  description: "Full-stack developer portfolio showcasing web development projects, skills, and experience in modern technologies.",
+  description:
+    "Full-stack developer portfolio showcasing web development projects, skills, and experience in modern technologies.",
 };
 
 export default function RootLayout({

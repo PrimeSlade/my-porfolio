@@ -61,6 +61,7 @@ export const techData: TechCard[] = [
       { name: "Next.js", color: "purple", Icon: SiNextdotjs },
       { name: "Express", color: "purple", Icon: SiExpress },
       { name: "Hono", color: "purple", Icon: SiHono },
+      { name: "NestJS", color: "purple", Icon: SiNestjs },
     ],
   },
   {
@@ -118,6 +119,5 @@ export const backendExpertise = [
 
 export const currentlyLearning = [
   { name: "GraphQL", Icon: SiGraphql },
-  { name: "NestJs", Icon: SiNestjs },
   { name: "Go", Icon: SiGo },
 ];
