@@ -20,6 +20,8 @@ import {
   SiNestjs,
   SiSocketdotio,
   SiRedis,
+  SiCloudflare,
+  SiExcalidraw,
 } from "react-icons/si";
 import { LucideIcon, User, Users, Shield } from "lucide-react";
 
@@ -57,6 +59,38 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    id: 7,
+    title: "UniShare",
+    status: "Development",
+    icon: Users,
+    color: "teal",
+    description:
+      "An open-source university platform for students to share notes, past question papers, and academic resources. Designed to facilitate collaborative learning and resource accessibility within academic communities.",
+    tech: [
+      { name: "Next.js", icon: SiNextdotjs },
+      { name: "NestJS", icon: SiNestjs },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "Socket.IO", icon: SiSocketdotio },
+      { name: "PostgreSQL", icon: SiPostgresql },
+      { name: "Cloudflare R2", icon: SiCloudflare },
+      { name: "Excalidraw", icon: SiExcalidraw },
+      { name: "Prisma", icon: SiPrisma },
+      { name: "Better Auth", icon: Shield },
+      { name: "TanStack", icon: SiReactquery },
+      { name: "Shadcn", icon: SiShadcnui },
+      { name: "Zod", icon: SiZod },
+    ],
+    date: "Feb 2026",
+    demo: "https://share.psstee.dev",
+    repositories: [
+      {
+        label: "Full Stack",
+        url: "https://github.com/unishare-oss/unishare",
+      },
+    ],
+  },
   {
     id: 1,
     title: "Slade Chat",
