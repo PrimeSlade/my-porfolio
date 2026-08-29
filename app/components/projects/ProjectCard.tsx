@@ -37,6 +37,24 @@ const brandMap: Record<string, string> = {
 
 const getBrand = (name: string) => brandMap[name] ?? "#e5e5e5";
 
+const badgeMap: Record<string, { text: string; border: string; bg: string }> = {
+  Development: {
+    text: "text-amber-300",
+    border: "border-amber-500/25",
+    bg: "bg-amber-500/10",
+  },
+  Stable: {
+    text: "text-emerald-300",
+    border: "border-emerald-500/20",
+    bg: "bg-emerald-500/10",
+  },
+  Production: {
+    text: "text-emerald-300",
+    border: "border-emerald-500/20",
+    bg: "bg-emerald-500/10",
+  },
+};
+
 const ProjectCard = ({
   title,
   status,
@@ -48,6 +66,7 @@ const ProjectCard = ({
   demoCredentials,
   active,
 }: Project & { active?: boolean }) => {
+  const badge = badgeMap[status] ?? badgeMap.Stable;
   return (
     <div className="group relative border border-white/[0.06] bg-[#0a0a0a] transition-colors">
       {/* Center glow — always visible, never fades */}
@@ -78,9 +97,9 @@ const ProjectCard = ({
             </span>
           </div>
         </div>
-        <div className="flex items-center gap-1.5 border border-white/[0.06] px-2 py-1">
-          <GitBranch size={12} className="text-neutral-500" />
-          <span className="text-[10px] tracking-[0.12em] uppercase font-mono text-neutral-500">
+        <div className={`flex items-center gap-1.5 border px-2 py-1 ${badge.border} ${badge.bg}`}>
+          <GitBranch size={12} className={badge.text} />
+          <span className={`text-[10px] tracking-[0.12em] uppercase font-mono ${badge.text}`}>
             {status}
           </span>
         </div>
