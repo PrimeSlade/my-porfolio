@@ -7,6 +7,9 @@ import { ArrowUpRight, Github } from "lucide-react";
 const GitHubContributions = () => {
   const username = "PrimeSlade";
   const [total, setTotal] = useState<number | null>(null);
+  const [blockSize, setBlockSize] = useState(12);
+  const [blockMargin, setBlockMargin] = useState(4);
+  const [fontSize, setFontSize] = useState(11);
 
   useEffect(() => {
     fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`)
@@ -15,6 +18,32 @@ const GitHubContributions = () => {
         if (d?.total?.lastYear != null) setTotal(d.total.lastYear);
       })
       .catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      if (w < 380) {
+        setBlockSize(7);
+        setBlockMargin(2);
+        setFontSize(9);
+      } else if (w < 640) {
+        setBlockSize(9);
+        setBlockMargin(3);
+        setFontSize(10);
+      } else if (w < 1024) {
+        setBlockSize(11);
+        setBlockMargin(4);
+        setFontSize(11);
+      } else {
+        setBlockSize(12);
+        setBlockMargin(4);
+        setFontSize(11);
+      }
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
   }, []);
 
   // GitHub green — exact GitHub palette, 0 rounded via blockRadius={0}
@@ -78,17 +107,17 @@ const GitHubContributions = () => {
         </div>
       </div>
 
-      {/* Graph */}
-      <div className="dot-grid">
-        <div className="max-w-7xl mx-auto border-x border-white/[0.06] bg-[#0a0a0a]">
-          {/* Total contributions bar — prominent */}
+      {/* Graph — responsive box */}
+      <div className="dot-grid px-3 sm:px-6">
+        <div className="max-w-7xl mx-auto w-full border border-white/[0.06] bg-[#0a0a0a]">
+          {/* Total contributions bar — responsive, no truncation */}
           {total !== null && (
-            <div className="grid grid-cols-3 gap-px bg-white/[0.06] border-b border-white/[0.06]">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/[0.06] border-b border-white/[0.06]">
               <div className="bg-[#0a0a0a] px-4 py-3 flex items-center justify-between sm:justify-center gap-3">
-                <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-neutral-500">
+                <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-neutral-500 whitespace-nowrap">
                   Total — Last year
                 </span>
-                <span className="font-black text-[20px] tracking-[-0.03em] text-[#e5e5e5]">
+                <span className="font-black text-[18px] sm:text-[20px] tracking-[-0.03em] text-[#e5e5e5]">
                   {total.toLocaleString()}
                 </span>
               </div>
@@ -108,7 +137,7 @@ const GitHubContributions = () => {
               </a>
               <div className="bg-[#0a0a0a] px-4 py-3 flex items-center justify-center gap-2">
                 <span className="w-2 h-2 bg-[#39d353]" />
-                <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-neutral-400">
+                <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-neutral-400 whitespace-nowrap">
                   Green — GitHub style
                 </span>
               </div>
@@ -136,33 +165,33 @@ const GitHubContributions = () => {
             href={`https://github.com/${username}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex justify-center p-4 sm:p-6 overflow-x-auto scrollbar-thin hover:bg-[#111111]/50 transition-colors"
+            className="flex justify-center p-3 sm:p-4 lg:p-6 overflow-x-auto scrollbar-thin hover:bg-[#111111]/50 transition-colors"
             title="Open GitHub profile"
           >
-            <div className="min-w-[720px] mx-auto">
-              <GitHubCalendar
-                username={username}
-                blockSize={12}
-                blockMargin={4}
-                blockRadius={0}
-                fontSize={11}
-                colorScheme="dark"
-                theme={greenTheme}
-                showColorLegend={false}
-                showMonthLabels
-                showTotalCount
-                labels={{
-                  totalCount: `{{count}} contributions in the last year — linked to github.com/${username}`,
-                }}
-                style={{
-                  color: "#a3a3a3",
-                }}
-              />
+            <div className="w-full max-w-full flex justify-center">
+              <div className="w-full overflow-hidden flex justify-center">
+                <GitHubCalendar
+                  username={username}
+                  blockSize={blockSize}
+                  blockMargin={blockMargin}
+                  blockRadius={0}
+                  fontSize={fontSize}
+                  colorScheme="dark"
+                  theme={greenTheme}
+                  showColorLegend={false}
+                  showMonthLabels
+                  showTotalCount
+                  labels={{
+                    totalCount: `{{count}} contributions in the last year — linked to github.com/${username}`,
+                  }}
+                  style={{
+                    color: "#a3a3a3",
+                    maxWidth: "100%",
+                  }}
+                />
+              </div>
             </div>
           </a>
-          <div className="sm:hidden px-4 pb-3 font-mono text-[10px] tracking-[0.12em] uppercase text-neutral-600">
-            ← scroll →
-          </div>
 
           {/* Link bar */}
           <div className="flex flex-col sm:flex-row gap-px bg-white/[0.06] border-t border-white/[0.06]">
