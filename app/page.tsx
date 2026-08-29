@@ -5,7 +5,7 @@ import GitHubContributions from "./components/home/GitHubContributions";
 
 const page = () => {
   return (
-    <main className="bg-black">
+    <main className="bg-[#0a0a0a]">
       <IntroSection />
       <TechStack />
       <GitHubContributions />

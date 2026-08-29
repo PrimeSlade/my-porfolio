@@ -24,22 +24,22 @@ const GitHubContributions = () => {
   };
 
   return (
-    <section id="github" className="bg-black border-t border-white/10">
+    <section id="github" className="bg-[#0a0a0a] border-t border-white/[0.06]">
       {/* Header — linked to profile */}
-      <div className="border-b border-white/10 bg-black">
+      <div className="border-b border-white/[0.06] bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-6 py-6 flex items-end justify-between gap-4">
           <div>
             <a
               href={`https://github.com/${username}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase font-mono text-neutral-500 mb-2 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase font-mono text-neutral-500 mb-2 hover:text-[#e5e5e5] transition-colors"
             >
-              <span className="w-6 h-px bg-white/20" />
+              <span className="w-6 h-px bg-white/10" />
               github.com/{username} — ↗ profile
             </a>
-            <h2 className="text-[32px] sm:text-[42px] font-black tracking-[-0.04em] leading-none text-white flex items-center gap-3">
-              <Github size={28} className="text-white" />
+            <h2 className="text-[32px] sm:text-[42px] font-black tracking-[-0.04em] leading-none text-[#e5e5e5] flex items-center gap-3">
+              <Github size={28} className="text-[#e5e5e5]" />
               Contributions
             </h2>
             <p className="mt-2 font-mono text-[11px] tracking-[0.12em] uppercase text-neutral-500">
@@ -48,7 +48,7 @@ const GitHubContributions = () => {
                 href={`https://github.com/${username}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white underline decoration-white/20 underline-offset-4 hover:decoration-white"
+                className="text-[#e5e5e5] underline decoration-white/10 underline-offset-4 hover:decoration-white/20"
               >
                 github.com/{username}
               </a>{" "}
@@ -57,11 +57,11 @@ const GitHubContributions = () => {
           </div>
           <div className="hidden sm:flex items-center gap-3 shrink-0">
             {total !== null && (
-              <div className="hidden lg:block text-right border border-white/10 bg-[#050505] px-4 py-2">
+              <div className="hidden lg:block text-right border border-white/[0.06] bg-[#111111] px-4 py-2">
                 <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-neutral-500">
                   Total — Last year
                 </div>
-                <div className="font-black text-[18px] leading-none tracking-[-0.03em] text-white">
+                <div className="font-black text-[18px] leading-none tracking-[-0.03em] text-[#e5e5e5]">
                   {total.toLocaleString()}
                 </div>
               </div>
@@ -70,7 +70,7 @@ const GitHubContributions = () => {
               href={`https://github.com/${username}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-white text-black px-5 py-2.5 text-[11px] tracking-[0.15em] uppercase font-bold hover:bg-neutral-200 transition-colors"
+              className="inline-flex items-center gap-2 bg-[#e5e5e5] text-[#0a0a0a] px-5 py-2.5 text-[11px] tracking-[0.15em] uppercase font-bold hover:bg-white transition-colors"
             >
               View Profile <ArrowUpRight size={14} />
             </a>
@@ -80,15 +80,15 @@ const GitHubContributions = () => {
 
       {/* Graph */}
       <div className="dot-grid">
-        <div className="max-w-7xl mx-auto border-x border-white/10 bg-black">
+        <div className="max-w-7xl mx-auto border-x border-white/[0.06] bg-[#0a0a0a]">
           {/* Total contributions bar — prominent */}
           {total !== null && (
-            <div className="grid grid-cols-3 gap-px bg-white/10 border-b border-white/10">
-              <div className="bg-black px-4 py-3 flex items-center justify-between sm:justify-center gap-3">
+            <div className="grid grid-cols-3 gap-px bg-white/[0.06] border-b border-white/[0.06]">
+              <div className="bg-[#0a0a0a] px-4 py-3 flex items-center justify-between sm:justify-center gap-3">
                 <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-neutral-500">
                   Total — Last year
                 </span>
-                <span className="font-black text-[20px] tracking-[-0.03em] text-white">
+                <span className="font-black text-[20px] tracking-[-0.03em] text-[#e5e5e5]">
                   {total.toLocaleString()}
                 </span>
               </div>
@@ -96,17 +96,17 @@ const GitHubContributions = () => {
                 href={`https://github.com/${username}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-black px-4 py-3 flex items-center justify-center gap-2 hover:bg-white group transition-colors"
+                className="bg-[#0a0a0a] px-4 py-3 flex items-center justify-center gap-2 hover:bg-[#e5e5e5] group transition-colors"
               >
-                <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-neutral-500 group-hover:text-black">
+                <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-neutral-500 group-hover:text-[#0a0a0a]">
                   Profile
                 </span>
-                <span className="font-mono text-[11px] tracking-[0.12em] uppercase text-white group-hover:text-black hidden sm:inline">
+                <span className="font-mono text-[11px] tracking-[0.12em] uppercase text-[#e5e5e5] group-hover:text-[#0a0a0a] hidden sm:inline">
                   @{username}
                 </span>
-                <ArrowUpRight size={12} className="text-neutral-600 group-hover:text-black" />
+                <ArrowUpRight size={12} className="text-neutral-600 group-hover:text-[#0a0a0a]" />
               </a>
-              <div className="bg-black px-4 py-3 flex items-center justify-center gap-2">
+              <div className="bg-[#0a0a0a] px-4 py-3 flex items-center justify-center gap-2">
                 <span className="w-2 h-2 bg-[#39d353]" />
                 <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-neutral-400">
                   Green — GitHub style
@@ -115,17 +115,17 @@ const GitHubContributions = () => {
             </div>
           )}
 
-          <div className="border-b border-white/10 bg-[#050505] px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+          <div className="border-b border-white/[0.06] bg-[#111111] px-4 py-3 flex flex-wrap items-center justify-between gap-3">
             <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-neutral-500">
               Last 12 months — daily activity
             </span>
             <span className="flex items-center gap-2 font-mono text-[10px] tracking-[0.12em] uppercase text-neutral-600">
               <span className="hidden sm:inline">Less</span>
               <span className="flex items-center gap-1">
-                <span className="w-3 h-3 bg-[#161b22] border border-white/10" />
-                <span className="w-3 h-3 bg-[#0e4429] border border-white/10" />
-                <span className="w-3 h-3 bg-[#006d32] border border-white/10" />
-                <span className="w-3 h-3 bg-[#26a641] border border-white/10" />
+                <span className="w-3 h-3 bg-[#161b22] border border-white/[0.06]" />
+                <span className="w-3 h-3 bg-[#0e4429] border border-white/[0.06]" />
+                <span className="w-3 h-3 bg-[#006d32] border border-white/[0.06]" />
+                <span className="w-3 h-3 bg-[#26a641] border border-white/[0.06]" />
                 <span className="w-3 h-3 bg-[#39d353] border border-white/10" />
               </span>
               <span className="hidden sm:inline">More</span>
@@ -136,7 +136,7 @@ const GitHubContributions = () => {
             href={`https://github.com/${username}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex justify-center p-4 sm:p-6 overflow-x-auto scrollbar-thin hover:bg-[#050505] transition-colors"
+            className="flex justify-center p-4 sm:p-6 overflow-x-auto scrollbar-thin hover:bg-[#111111]/50 transition-colors"
             title="Open GitHub profile"
           >
             <div className="min-w-[720px] mx-auto">
@@ -165,40 +165,40 @@ const GitHubContributions = () => {
           </div>
 
           {/* Link bar */}
-          <div className="flex flex-col sm:flex-row gap-px bg-white/10 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row gap-px bg-white/[0.06] border-t border-white/[0.06]">
             <a
               href={`https://github.com/${username}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 bg-black px-4 py-3 flex items-center justify-between hover:bg-white group transition-colors"
+              className="flex-1 bg-[#0a0a0a] px-4 py-3 flex items-center justify-between hover:bg-[#e5e5e5] group transition-colors"
             >
-              <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-neutral-400 group-hover:text-black">
+              <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-neutral-400 group-hover:text-[#0a0a0a]">
                 github.com/{username} — open profile
               </span>
               <ArrowUpRight
                 size={14}
-                className="text-neutral-600 group-hover:text-black group-hover:translate-x-0.5 transition-all"
+                className="text-neutral-600 group-hover:text-[#0a0a0a] group-hover:translate-x-0.5 transition-all"
               />
             </a>
             <a
               href={`https://github.com/${username}?tab=repositories`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-black px-4 py-3 flex items-center gap-2 hover:bg-white group transition-colors border-t sm:border-t-0 sm:border-l border-white/10"
+              className="bg-[#0a0a0a] px-4 py-3 flex items-center gap-2 hover:bg-[#e5e5e5] group transition-colors border-t sm:border-t-0 sm:border-l border-white/[0.06]"
             >
-              <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-neutral-400 group-hover:text-black">
+              <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-neutral-400 group-hover:text-[#0a0a0a]">
                 Repositories
               </span>
               <ArrowUpRight
                 size={12}
-                className="text-neutral-600 group-hover:text-black"
+                className="text-neutral-600 group-hover:text-[#0a0a0a]"
               />
             </a>
           </div>
 
-          {/* Striped footer like Stack */}
+          {/* Striped footer */}
           <div
-            className="h-6 bg-[repeating-linear-gradient(-45deg,#0a0a0a_0_8px,#111_8px_16px)] border-t border-white/10"
+            className="h-6 bg-[repeating-linear-gradient(-45deg,#080808_0_8px,#0f0f0f_8px_16px)] border-t border-white/[0.06]"
             aria-hidden
           />
         </div>
@@ -210,7 +210,7 @@ const GitHubContributions = () => {
           href={`https://github.com/${username}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full inline-flex items-center justify-center gap-2 bg-white text-black px-5 py-3 text-[11px] tracking-[0.15em] uppercase font-bold hover:bg-neutral-200 transition-colors"
+          className="w-full inline-flex items-center justify-center gap-2 bg-[#e5e5e5] text-[#0a0a0a] px-5 py-3 text-[11px] tracking-[0.15em] uppercase font-bold hover:bg-white transition-colors"
         >
           View GitHub Profile <ArrowUpRight size={14} />
         </a>

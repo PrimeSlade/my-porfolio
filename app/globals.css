@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
-  --border: #1a1a1a;
+  --background: #0a0a0a;
+  --foreground: #e5e5e5;
+  --border: #1e1e1e;
   --muted: #737373;
 }
 
@@ -24,26 +24,26 @@ html {
 }
 
 body {
-  background: #000000;
-  color: #ffffff;
+  background: #0a0a0a;
+  color: #e5e5e5;
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Subtle dotted grid like reference image */
+/* Subtle dotted grid — muted */
 .dot-grid {
-  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
   background-size: 16px 16px;
 }
 
 .dot-grid-strong {
-  background-image: radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
   background-size: 14px 14px;
 }
 
 /* Hairline borders - minimalist */
 .border-hairline {
-  border-color: #1a1a1a;
+  border-color: #1e1e1e;
 }
 
 /* Custom scrollbar */
@@ -52,7 +52,7 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #000;
+  background: #0a0a0a;
 }
 ::-webkit-scrollbar-thumb {
   background: #262626;
@@ -76,8 +76,33 @@ body {
   width: 100%;
 }
 
-/* Selection */
+/* F1 wheel smoke — obvious */
+@keyframes smoke-drift {
+  0% { transform: translateX(0) translateY(0) scale(0.6); opacity: 0; }
+  15% { opacity: 0.55; }
+  100% { transform: translateX(-26px) translateY(-4px) scale(1.8); opacity: 0; }
+}
+@keyframes smoke-drift-2 {
+  0% { transform: translateX(-2px) translateY(1px) scale(0.55); opacity: 0; }
+  20% { opacity: 0.42; }
+  100% { transform: translateX(-32px) translateY(-6px) scale(2.0); opacity: 0; }
+}
+
+/* Red racing line & outline flowing through Sai */
+@keyframes line-flow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(220%); }
+}
+@keyframes line-pulse {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 1; }
+}
+@keyframes outline-flow {
+  to { stroke-dashoffset: -28; }
+}
+
+/* Selection — muted */
 ::selection {
-  background: #fff;
-  color: #000;
+  background: #e5e5e5;
+  color: #0a0a0a;
 }

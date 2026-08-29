@@ -32,15 +32,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable} antialiased bg-black text-white selection:bg-white selection:text-black`}
+        className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable} antialiased bg-[#0a0a0a] text-[#e5e5e5] selection:bg-[#e5e5e5] selection:text-[#0a0a0a]`}
       >
-        <div className="bg-black text-white min-h-screen">
+        <div className="bg-[#0a0a0a] text-[#e5e5e5] min-h-screen">
           <Navbar />
           <div className="min-h-screen pt-[57px]">{children}</div>
-          <footer className="border-t border-white/10 py-6 px-6">
-            <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between gap-2 text-[11px] tracking-[0.18em] uppercase text-neutral-500 font-mono">
+          <footer className="border-t border-white/[0.06] py-6 px-6">
+            <div className="max-w-7xl mx-auto flex text-[11px] tracking-[0.18em] uppercase text-neutral-500 font-mono">
               <span>© {new Date().getFullYear()} Sai Zayar Hein</span>
-              <span>Built with Next.js — Black & White</span>
             </div>
           </footer>
         </div>
