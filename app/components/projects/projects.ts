@@ -149,12 +149,8 @@ export const projects: Project[] = [
     },
     repositories: [
       {
-        label: "Frontend",
-        url: "https://github.com/PrimeSlade/Point-Of-Sale-Frontend",
-      },
-      {
-        label: "Backend",
-        url: "https://github.com/PrimeSlade/Point-Of-Sale-Backend",
+        label: "Full Stack",
+        url: "https://github.com/PrimeSlade/clinic-point-of-sale",
       },
     ],
   },

@@ -5,6 +5,7 @@ import {
   PackageOpen,
   Code2,
   Workflow,
+  Shield,
 } from "lucide-react";
 import {
   SiJavascript,
@@ -33,6 +34,7 @@ import {
   SiGo,
   SiGraphql,
   SiNestjs,
+  SiSocketdotio,
 } from "react-icons/si";
 
 export type TechItem = {
@@ -81,6 +83,8 @@ export const techData: TechCard[] = [
       { name: "Prisma", Icon: SiPrisma, brand: "#2D3748" },
       { name: "GraphQL", Icon: SiGraphql, brand: "#E10098" },
       { name: "BullMQ", Icon: Workflow, brand: "#FF3432" },
+      { name: "Socket.IO", Icon: SiSocketdotio, brand: "#FFFFFF" },
+      { name: "Better Auth", Icon: Shield, brand: "#FFFFFF" },
     ],
   },
   {

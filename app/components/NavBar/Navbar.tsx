@@ -16,14 +16,14 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-black border-b border-white/10 z-50">
+    <nav className="fixed top-0 w-full bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-white/[0.06] z-50">
       <div className="max-w-7xl mx-auto px-6 h-[57px] flex items-center justify-between">
         {/* Left - Brand */}
         <Link
           href="/"
           className="font-mono text-[13px] tracking-[0.2em] uppercase font-bold"
         >
-          <span className="text-white">Prime</span>
+          <span className="text-[#e5e5e5]">Prime</span>
           <span className="text-neutral-500">Slade</span>
           <span className="ml-2 text-[10px] tracking-[0.3em] text-neutral-600 hidden sm:inline">
             — Sai Zayar Hein
@@ -40,8 +40,8 @@ const Navbar = () => {
                 href={link.href}
                 className={`px-4 py-2 border transition-colors ${
                   isActive
-                    ? "bg-white text-black border-white"
-                    : "text-neutral-400 border-transparent hover:text-white hover:border-white/15"
+                    ? "bg-[#e5e5e5] text-[#0a0a0a] border-[#e5e5e5]"
+                    : "text-neutral-400 border-transparent hover:text-[#e5e5e5] hover:border-white/[0.08]"
                 }`}
               >
                 {link.label}
@@ -53,7 +53,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden w-9 h-9 flex items-center justify-center border border-white/10 text-white hover:bg-white hover:text-black transition-colors"
+          className="md:hidden w-9 h-9 flex items-center justify-center border border-white/[0.06] text-[#e5e5e5] hover:bg-[#e5e5e5] hover:text-[#0a0a0a] transition-colors"
           aria-label="Toggle menu"
         >
           {isOpen ? <X size={16} /> : <Menu size={16} />}
@@ -62,7 +62,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden bg-black border-t border-white/10 overflow-hidden transition-all duration-300 ease-in-out ${
+        className={`md:hidden bg-[#0a0a0a] border-t border-white/[0.06] overflow-hidden transition-all duration-300 ease-in-out ${
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -80,8 +80,8 @@ const Navbar = () => {
                     : "-translate-y-2 opacity-0"
                 } ${
                   isActive
-                    ? "bg-white text-black border-white"
-                    : "text-neutral-400 border-white/10 hover:text-white hover:border-white/20"
+                    ? "bg-[#e5e5e5] text-[#0a0a0a] border-[#e5e5e5]"
+                    : "text-neutral-400 border-white/[0.06] hover:text-[#e5e5e5] hover:border-white/10"
                 }`}
                 style={{
                   transitionDelay: isOpen ? `${index * 60}ms` : "0ms",
