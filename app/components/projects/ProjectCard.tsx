@@ -46,9 +46,23 @@ const ProjectCard = ({
   repositories,
   demo,
   demoCredentials,
-}: Project) => {
+  active,
+}: Project & { active?: boolean }) => {
   return (
-    <div className="group border border-white/[0.06] bg-[#0a0a0a] hover:border-white/10 transition-colors">
+    <div className="group relative border border-white/[0.06] bg-[#0a0a0a] transition-colors">
+      {/* Center glow — always visible, never fades */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.035] to-transparent blur-[1px] -z-10" />
+      {/* Fading white border — persists until hover another card */}
+      <div
+        className={`pointer-events-none absolute inset-0 transition-opacity duration-300 ${
+          active ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+        }`}
+      >
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+        <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-white/60 to-transparent" />
+        <div className="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-white/60 to-transparent" />
+      </div>
       {/* Top bar */}
       <div className="flex items-start justify-between px-6 py-4 border-b border-white/[0.06] bg-[#111111]">
         <div className="flex items-center gap-3">

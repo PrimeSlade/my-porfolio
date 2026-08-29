@@ -155,12 +155,9 @@ const IntroSection = () => {
           <div className="py-8 lg:py-16 xl:py-20 lg:pl-8 xl:pl-10 flex flex-col gap-3">
             {/* Index card */}
             <div className="border border-white/[0.06] bg-[#111111]">
-              <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/[0.06]">
+              <div className="flex items-center px-4 py-2.5 border-b border-white/[0.06]">
                 <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-neutral-500">
                   Index — 001 / Profile
-                </span>
-                <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#e5e5e5] border border-white/[0.06] px-1.5 py-0.5">
-                  2024 — 2026
                 </span>
               </div>
 
