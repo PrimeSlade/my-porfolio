@@ -17,7 +17,7 @@ const IntroSection = () => {
         <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-b border-white/[0.06] text-[10px] tracking-[0.2em] uppercase font-mono text-neutral-500">
           <span>Full Stack · Backend Focused · Bangkok</span>
           <span className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-[#e5e5e5] animate-pulse" />
+            <span className="w-2 h-2 bg-[#22c55e] animate-pulse shadow-[0_0_6px_rgba(34,197,94,0.5)]" />
             Available for work
           </span>
         </div>
