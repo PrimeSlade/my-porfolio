@@ -22,6 +22,13 @@ export const metadata: Metadata = {
   title: "Sai Zayar Hein — PrimeSlade",
   description:
     "Full-stack developer portfolio showcasing web development projects, skills, and experience in modern technologies.",
+  icons: {
+    icon: [
+      { url: "/icon0.svg?v=3", type: "image/svg+xml" },
+      { url: "/favicon.ico?v=3", type: "image/x-icon" },
+    ],
+    apple: [{ url: "/apple-icon.png?v=3", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({

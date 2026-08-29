@@ -13,10 +13,6 @@ const ProjectPage = () => {
     setActiveProject(projectId);
   };
 
-  const handleMouseLeave = () => {
-    setActiveProject(null);
-  };
-
   const uniqueDates = Array.from(new Set(projects.map((p) => p.date)));
 
   return (
@@ -44,9 +40,8 @@ const ProjectPage = () => {
             <div
               key={project.id}
               onMouseEnter={() => handleMouseEnter(project.id)}
-              onMouseLeave={handleMouseLeave}
             >
-              <ProjectCard {...project} />
+              <ProjectCard {...project} active={activeProject === project.id} />
             </div>
           ))}
         </div>
