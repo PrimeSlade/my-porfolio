@@ -648,7 +648,7 @@ h3 {
   padding-top: 22px;
 }
 
-/* skills logo wall: 8-col grid, key tools are 2x2 so rows fill exactly (27 + 7x3 = 48 cells) */
+/* skills logo wall: key tools are 2x2 so rows fill exactly at 8 and 4 columns (29 + 9x3 = 56 cells) */
 .skillwall {
   display: grid;
   gap: 18px;
@@ -1133,7 +1133,10 @@ h3 {
     color: var(--bg);
   }
   .logos {
-    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+  .lg span {
+    font-size: 10.5px;
   }
 }
 @media (max-width: 560px) {

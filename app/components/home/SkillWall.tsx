@@ -7,7 +7,7 @@ const SkillWall = () => {
   const [filter, setFilter] = useState<SkillCategory | "all">("all");
 
   return (
-    <section className="section">
+    <section className="section" id="skills">
       <div className="sec-head">
         <h2>Skills</h2>
         <p>{skills.length} tools I build with. Pick a group to see what each is for.</p>
