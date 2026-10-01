@@ -8,7 +8,7 @@ import ProjectCard from "./components/projects/ProjectCard";
 import { projects } from "./components/projects/projects";
 import ContactPanel from "./components/ContactPanel";
 
-const featured = projects.slice(0, 4);
+const featured = projects.filter((p) => p.featured);
 
 const page = () => {
   return (

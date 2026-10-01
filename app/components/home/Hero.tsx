@@ -92,7 +92,7 @@ const Hero = () => {
         <div className="stats">
           <div className="stat">
             <b>
-              <StatCount value={8} />
+              <StatCount value={9} />
               <em>+</em>
             </b>
             <span>Projects built and shipped</span>

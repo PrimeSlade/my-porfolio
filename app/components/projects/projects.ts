@@ -29,8 +29,11 @@ import {
   SiSwagger,
   SiJest,
   SiGithubactions,
+  SiMongodb,
+  SiVitest,
+  SiJsonwebtokens,
 } from "react-icons/si";
-import { Rocket, Shield } from "lucide-react";
+import { Rocket, Shield, Workflow } from "lucide-react";
 
 export type Tech = {
   name: string;
@@ -46,6 +49,8 @@ export type Project = {
   /** Short result or highlight shown under the summary */
   impact: string;
   tile: "sage" | "sky" | "sand" | "coral" | "lilac";
+  /** Shown in "Selected projects" on the home page */
+  featured?: boolean;
   description: string;
   tech: Tech[];
   date: string;
@@ -61,6 +66,7 @@ export const projects: Project[] = [
   {
     id: 8,
     title: "Multi-Booking Engine",
+    featured: true,
     summary:
       "Books a hotel and a flight together as one trip, and safely undoes every step if any part fails.",
     impact: "Automatic retries and rollback when a step fails",
@@ -96,8 +102,41 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: 9,
+    title: "Scalable News Feed",
+    featured: true,
+    summary:
+      "The back end of a Twitter-style home feed, built so new posts reach followers quickly, even for accounts with huge followings.",
+    impact: "Push and pull hybrid for accounts with 10k+ followers",
+    tile: "coral",
+    status: "Stable",
+    description:
+      "A news feed backend using fan-out on write with a hybrid celebrity pull on read. Creating a post saves it to MongoDB and queues a BullMQ job that pushes the post ID into each follower's Redis sorted set (trimmed to 1,000 entries); authors above a 10k-follower threshold skip fan-out and are pulled live at read time. The read path merges both sources into one cursor-paginated feed and hydrates posts cache-aside (Redis first, MongoDB fallback). Includes JWT auth with rotating HttpOnly refresh cookies, Swagger docs, Vitest unit and integration tests, and a GitHub Actions CI workflow.",
+    tech: [
+      { name: "Express", icon: SiExpress },
+      { name: "Redis", icon: SiRedis },
+      { name: "BullMQ", icon: Workflow },
+      { name: "MongoDB", icon: SiMongodb },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "Prisma", icon: SiPrisma },
+      { name: "JWT", icon: SiJsonwebtokens },
+      { name: "Swagger", icon: SiSwagger },
+      { name: "Vitest", icon: SiVitest },
+      { name: "GitHub Actions", icon: SiGithubactions },
+    ],
+    date: "Jul 2026",
+    repositories: [
+      {
+        label: "Backend",
+        url: "https://github.com/PrimeSlade/scalable-news-feed-system",
+      },
+    ],
+  },
+  {
     id: 7,
     title: "UniShare",
+    featured: true,
     summary:
       "An open-source platform where university students share notes, past exam papers and study resources.",
     impact: "Cut build times by 40% with a monorepo setup",
@@ -164,6 +203,7 @@ export const projects: Project[] = [
   {
     id: 2,
     title: "Medical Clinic POS System",
+    featured: true,
     summary:
       "Runs a clinic and pharmacy: patients, treatments, medicine stock, invoices, expenses and reports.",
     impact: "Live and used by a real clinic",

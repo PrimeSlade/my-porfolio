@@ -28,6 +28,8 @@ const brandMap: Record<string, string> = {
   Swagger: "#85EA2D",
   Jest: "#C21325",
   "GitHub Actions": "#2088FF",
+  BullMQ: "#DC382D",
+  Vitest: "#6E9F18",
 };
 
 const statusLabel: Record<string, string> = {
