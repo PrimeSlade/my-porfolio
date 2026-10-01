@@ -1,27 +1,24 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Anton, Figtree } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/NavBar/Navbar";
+import PointerEffects from "./components/PointerEffects";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const anton = Anton({
+  variable: "--font-anton",
+  weight: "400",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+const figtree = Figtree({
+  variable: "--font-figtree",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "Sai Zayar Hein — PrimeSlade",
   description:
-    "Full-stack developer portfolio showcasing web development projects, skills, and experience in modern technologies.",
+    "Sai Zayar Hein, full-stack software engineer in Bangkok. I build web apps businesses rely on, with a focus on reliable back ends.",
   icons: {
     icon: [
       { url: "/icon0.svg?v=3", type: "image/svg+xml" },
@@ -31,23 +28,29 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#edf0f4" },
+    { media: "(prefers-color-scheme: dark)", color: "#12151b" },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${jetbrainsMono.variable} antialiased bg-[#0a0a0a] text-[#e5e5e5] selection:bg-[#e5e5e5] selection:text-[#0a0a0a]`}
-      >
-        <div className="bg-[#0a0a0a] text-[#e5e5e5] min-h-screen">
-          <Navbar />
-          <div className="min-h-screen pt-[57px]">{children}</div>
-          <footer className="border-t border-white/[0.06] py-6 px-6">
-            <div className="max-w-7xl mx-auto flex text-[11px] tracking-[0.18em] uppercase text-neutral-500 font-mono">
-              <span>© {new Date().getFullYear()} Sai Zayar Hein</span>
-            </div>
+    <html lang="en" className={`${anton.variable} ${figtree.variable}`}>
+      <body>
+        <div className="progress" aria-hidden="true" />
+        <PointerEffects />
+        <Navbar />
+        <div className="wrap">
+          {children}
+          <footer className="site-footer">
+            <span>© {new Date().getFullYear()} Sai Zayar Hein</span>
+            <span>Bangkok · Remote</span>
           </footer>
         </div>
       </body>
