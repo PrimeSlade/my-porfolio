@@ -21,6 +21,13 @@ const brandMap: Record<string, string> = {
   Cloudinary: "#3448C5",
   Gemini: "#8E75FF",
   MongoDB: "#47A248",
+  RabbitMQ: "#FF6600",
+  Vite: "#646CFF",
+  "Tailwind CSS": "#06B6D4",
+  Nginx: "#009639",
+  Swagger: "#85EA2D",
+  Jest: "#C21325",
+  "GitHub Actions": "#2088FF",
 };
 
 const statusLabel: Record<string, string> = {

@@ -22,8 +22,15 @@ import {
   SiRedis,
   SiCloudflare,
   SiExcalidraw,
+  SiRabbitmq,
+  SiVite,
+  SiTailwindcss,
+  SiNginx,
+  SiSwagger,
+  SiJest,
+  SiGithubactions,
 } from "react-icons/si";
-import { Shield } from "lucide-react";
+import { Rocket, Shield } from "lucide-react";
 
 export type Tech = {
   name: string;
@@ -51,6 +58,43 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    id: 8,
+    title: "Multi-Booking Engine",
+    summary:
+      "Books a hotel and a flight together as one trip, and safely undoes every step if any part fails.",
+    impact: "Automatic retries and rollback when a step fails",
+    tile: "lilac",
+    status: "Development",
+    description:
+      "A distributed orchestration engine for multi-product bookings (hotel + flight). Each booking becomes a staged execution graph defined in YAML (availability, fraud check, payment, allotment, notification) whose steps are dispatched asynchronously over a RabbitMQ topic exchange to independent agent workers. Step outcomes are written back to PostgreSQL via Prisma for idempotency, failed steps retry through dead-letter queues, and failures trigger Saga-pattern compensations (refunding payment, releasing seats and rooms) or partial-booking decisions. Includes a React client that polls live step status, a simulation mode for failures and sold-out items, and Docker images deployed on Dokploy.",
+    tech: [
+      { name: "NestJS", icon: SiNestjs },
+      { name: "RabbitMQ", icon: SiRabbitmq },
+      { name: "PostgreSQL", icon: SiPostgresql },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "React", icon: SiReact },
+      { name: "Prisma", icon: SiPrisma },
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "Vite", icon: SiVite },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "Docker", icon: SiDocker },
+      { name: "Nginx", icon: SiNginx },
+      { name: "Dokploy", icon: Rocket },
+      { name: "Swagger", icon: SiSwagger },
+      { name: "Zod", icon: SiZod },
+      { name: "Jest", icon: SiJest },
+      { name: "GitHub Actions", icon: SiGithubactions },
+    ],
+    date: "Sep 2026",
+    demo: "https://book.primeslade.dev",
+    repositories: [
+      {
+        label: "Full Stack",
+        url: "https://github.com/PrimeSlade/multi-booking-engine",
+      },
+    ],
+  },
   {
     id: 7,
     title: "UniShare",
