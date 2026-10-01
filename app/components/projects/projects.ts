@@ -65,7 +65,7 @@ export const projects: Project[] = [
       "Books a hotel and a flight together as one trip, and safely undoes every step if any part fails.",
     impact: "Automatic retries and rollback when a step fails",
     tile: "lilac",
-    status: "Development",
+    status: "Production",
     description:
       "A distributed orchestration engine for multi-product bookings (hotel + flight). Each booking becomes a staged execution graph defined in YAML (availability, fraud check, payment, allotment, notification) whose steps are dispatched asynchronously over a RabbitMQ topic exchange to independent agent workers. Step outcomes are written back to PostgreSQL via Prisma for idempotency, failed steps retry through dead-letter queues, and failures trigger Saga-pattern compensations (refunding payment, releasing seats and rooms) or partial-booking decisions. Includes a React client that polls live step status, a simulation mode for failures and sold-out items, and Docker images deployed on Dokploy.",
     tech: [
@@ -102,7 +102,7 @@ export const projects: Project[] = [
       "An open-source platform where university students share notes, past exam papers and study resources.",
     impact: "Cut build times by 40% with a monorepo setup",
     tile: "sage",
-    status: "Development",
+    status: "Production",
     description:
       "An open-source university platform for students to share notes, past question papers, and academic resources. Designed to facilitate collaborative learning and resource accessibility within academic communities.",
     tech: [
