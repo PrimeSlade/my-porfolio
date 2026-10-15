@@ -63,10 +63,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/icon0.svg?v=3", type: "image/svg+xml" },
-      { url: "/favicon.ico?v=3", type: "image/x-icon" },
+      { url: "/icon0.svg?v=4", type: "image/svg+xml" },
+      { url: "/favicon.ico?v=4", type: "image/x-icon" },
     ],
-    apple: [{ url: "/apple-icon.png?v=3", type: "image/png" }],
+    apple: [{ url: "/apple-icon.png?v=4", type: "image/png" }],
   },
 };
 
