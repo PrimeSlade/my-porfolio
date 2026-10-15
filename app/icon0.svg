@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title">
-<title>SA</title>
-<rect width="512" height="512" fill="#0a0a0a"/>
-<rect x="14" y="14" width="484" height="484" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2.5"/>
-<text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" font-family="Geist, Helvetica, Arial, sans-serif" font-weight="900" font-size="184" fill="#e5e5e5" letter-spacing="-10">SA</text>
+<title>SZ</title>
+<rect width="512" height="512" fill="#171717"/>
+<text x="256" y="340" text-anchor="middle" font-family="Geist, Helvetica, Arial, sans-serif" font-weight="700" font-size="236" fill="#fafafa">SZ</text>
 </svg>
