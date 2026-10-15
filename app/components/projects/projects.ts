@@ -22,31 +22,39 @@ import {
   SiRedis,
   SiCloudflare,
   SiExcalidraw,
+  SiRabbitmq,
+  SiVite,
+  SiTailwindcss,
+  SiNginx,
+  SiSwagger,
+  SiJest,
+  SiGithubactions,
+  SiMongodb,
+  SiVitest,
+  SiJsonwebtokens,
 } from "react-icons/si";
-import { LucideIcon, User, Users, Shield } from "lucide-react";
+import { Rocket, Shield, Workflow } from "lucide-react";
+import type { SkillCategory } from "../home/skills";
 
 export type Tech = {
   name: string;
-  icon: any; // React component
+  icon: React.ElementType;
 };
 
 export type Project = {
   id: number;
   title: string;
+  /** URL segment for /projects/<slug> */
+  slug: string;
+  /** The kind of work the project is mostly about; sets its colour */
+  area: SkillCategory;
   status: string;
-  icon: LucideIcon;
-  color:
-    | "green"
-    | "blue"
-    | "amber"
-    | "cyan"
-    | "purple"
-    | "pink"
-    | "orange"
-    | "red"
-    | "indigo"
-    | "teal"
-    | string;
+  /** One plain-English sentence for non-technical readers */
+  summary: string;
+  /** Short result or highlight shown under the summary */
+  impact: string;
+  /** Shown in "Selected projects" on the home page */
+  featured?: boolean;
   description: string;
   tech: Tech[];
   date: string;
@@ -60,11 +68,87 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: 8,
+    title: "Multi-Booking Engine",
+    slug: "multi-booking-engine",
+    area: "api",
+    featured: true,
+    summary:
+      "Books a hotel and a flight together as one trip, and safely undoes every step if any part fails.",
+    impact: "Automatic retries and rollback when a step fails",
+    status: "Stable",
+    description:
+      "A distributed orchestration engine for multi-product bookings (hotel + flight). Each booking becomes a staged execution graph defined in YAML (availability, fraud check, payment, allotment, notification) whose steps are dispatched asynchronously over a RabbitMQ topic exchange to independent agent workers. Step outcomes are written back to PostgreSQL via Prisma for idempotency, failed steps retry through dead-letter queues, and failures trigger Saga-pattern compensations (refunding payment, releasing seats and rooms) or partial-booking decisions. Includes a React client that polls live step status, a simulation mode for failures and sold-out items, and Docker images deployed on Dokploy.",
+    tech: [
+      { name: "NestJS", icon: SiNestjs },
+      { name: "RabbitMQ", icon: SiRabbitmq },
+      { name: "PostgreSQL", icon: SiPostgresql },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "React", icon: SiReact },
+      { name: "Prisma", icon: SiPrisma },
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "Vite", icon: SiVite },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "Docker", icon: SiDocker },
+      { name: "Nginx", icon: SiNginx },
+      { name: "Dokploy", icon: Rocket },
+      { name: "Swagger", icon: SiSwagger },
+      { name: "Zod", icon: SiZod },
+      { name: "Jest", icon: SiJest },
+      { name: "GitHub Actions", icon: SiGithubactions },
+    ],
+    date: "Sep 2026",
+    demo: "https://book.primeslade.dev",
+    repositories: [
+      {
+        label: "Full Stack",
+        url: "https://github.com/PrimeSlade/multi-booking-engine",
+      },
+    ],
+  },
+  {
+    id: 9,
+    title: "Scalable News Feed",
+    slug: "scalable-news-feed",
+    area: "db",
+    featured: true,
+    summary:
+      "The back end of a Twitter-style home feed, built so new posts reach followers quickly, even for accounts with huge followings.",
+    impact: "Push and pull hybrid for accounts with 10k+ followers",
+    status: "Stable",
+    description:
+      "A news feed backend using fan-out on write with a hybrid celebrity pull on read. Creating a post saves it to MongoDB and queues a BullMQ job that pushes the post ID into each follower's Redis sorted set (trimmed to 1,000 entries); authors above a 10k-follower threshold skip fan-out and are pulled live at read time. The read path merges both sources into one cursor-paginated feed and hydrates posts cache-aside (Redis first, MongoDB fallback). Includes JWT auth with rotating HttpOnly refresh cookies, Swagger docs, Vitest unit and integration tests, and a GitHub Actions CI workflow.",
+    tech: [
+      { name: "Express", icon: SiExpress },
+      { name: "Redis", icon: SiRedis },
+      { name: "BullMQ", icon: Workflow },
+      { name: "MongoDB", icon: SiMongodb },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "Prisma", icon: SiPrisma },
+      { name: "JWT", icon: SiJsonwebtokens },
+      { name: "Swagger", icon: SiSwagger },
+      { name: "Vitest", icon: SiVitest },
+      { name: "GitHub Actions", icon: SiGithubactions },
+    ],
+    date: "Jul 2026",
+    repositories: [
+      {
+        label: "Backend",
+        url: "https://github.com/PrimeSlade/scalable-news-feed-system",
+      },
+    ],
+  },
+  {
     id: 7,
     title: "UniShare",
-    status: "Development",
-    icon: Users,
-    color: "teal",
+    slug: "unishare",
+    area: "web",
+    featured: true,
+    summary:
+      "An open-source platform where university students share notes, past exam papers and study resources.",
+    impact: "Cut build times by 40% with a monorepo setup",
+    status: "Production",
     description:
       "An open-source university platform for students to share notes, past question papers, and academic resources. Designed to facilitate collaborative learning and resource accessibility within academic communities.",
     tech: [
@@ -94,9 +178,12 @@ export const projects: Project[] = [
   {
     id: 1,
     title: "Slade Chat",
+    slug: "slade-chat",
+    area: "api",
+    summary:
+      "A messaging app with friends, direct messages and group rooms, showing who is online in real time.",
+    impact: "99.9% message delivery · 50% less database load",
     status: "Development",
-    icon: User,
-    color: "indigo",
     description:
       "A real-time messaging platform built with Next.js and NestJS that enables users to connect through friend management, direct messaging, and group chat rooms. Features Socket.IO for instant message delivery, Better Auth for secure authentication, and a Redis-based presence system for tracking online/offline status and last-seen timestamps.",
     tech: [
@@ -124,9 +211,13 @@ export const projects: Project[] = [
   {
     id: 2,
     title: "Medical Clinic POS System",
+    slug: "medical-clinic-pos",
+    area: "api",
+    featured: true,
+    summary:
+      "Runs a clinic and pharmacy: patients, treatments, medicine stock, invoices, expenses and reports.",
+    impact: "Live and used by a real clinic",
     status: "Production",
-    icon: User,
-    color: "green",
     description:
       "A full-stack healthcare Point-of-Sale and management system designed for medical clinics and pharmacies. The platform improves operational efficiency through attribute-based access control (ABAC), multi-unit inventory tracking, patient record management, treatment documentation, dynamic invoicing, expense tracking, and financial reporting.",
     tech: [
@@ -157,9 +248,12 @@ export const projects: Project[] = [
   {
     id: 3,
     title: "Respectfully Rude",
+    slug: "respectfully-rude",
+    area: "web",
+    summary:
+      "A playful AI app that writes backhanded compliments and draws cartoon \"roast\" images.",
+    impact: "Built by a team I led in 28 hours",
     status: "Stable",
-    icon: Users,
-    color: "purple",
     description:
       "Respectfully Rude is a hackathon project where I led a team of three to build a full-stack app that generates AI-powered backhanded compliments and roast images. Built with React and Node.js/Hono, it uses Google's Gemini AI to create sarcastic compliments and Replicate's Flux model to generate cartoon-style roast images based on user photos, complete with authentication and cloud storage.",
     tech: [
@@ -185,9 +279,12 @@ export const projects: Project[] = [
   {
     id: 4,
     title: "Zen Plan",
+    slug: "zen-plan",
+    area: "web",
+    summary:
+      "A weekly wellness planner for yoga, meditation, exercise and meals, with progress tracking.",
+    impact: "Group project with secure sign-in",
     status: "Stable",
-    icon: Users,
-    color: "amber",
     description:
       "A full-stack wellness planning application that helps users build healthy lifestyle routines through a structured weekly calendar. It features JWT authentication, customizable wellness activities (yoga, meditation, exercise, meal prep), category-based task organization, and progress tracking to promote holistic physical, mental, and emotional well-being.",
     tech: [
@@ -213,9 +310,12 @@ export const projects: Project[] = [
   {
     id: 5,
     title: "AI Hub",
+    slug: "ai-hub",
+    area: "web",
+    summary:
+      "An online course platform where instructors publish AI classes and students sign up for them.",
+    impact: "Course search, sign-in and email verification",
     status: "Stable",
-    icon: Users,
-    color: "blue",
     description:
       "AI Hub is a full-stack e-learning platform designed for AI education that enables instructors to create and manage courses while students can discover and enroll in AI-related content. The platform includes JWT-based authentication, email verification, profile management with picture uploads, and comprehensive course CRUD operations with search and sorting capabilities.",
     tech: [
@@ -229,7 +329,7 @@ export const projects: Project[] = [
       { name: "Shadcn", icon: SiShadcnui },
       { name: "Cloudinary", icon: SiCloudinary },
     ],
-    date: "April 2025",
+    date: "Apr 2025",
     repositories: [
       {
         label: "Full Stack",
@@ -240,9 +340,12 @@ export const projects: Project[] = [
   {
     id: 6,
     title: "Expense Tracker",
+    slug: "expense-tracker",
+    area: "api",
+    summary:
+      "The back end of an expense-tracking app, with secure accounts and receipt image uploads.",
+    impact: "REST API with encrypted passwords",
     status: "Stable",
-    icon: User,
-    color: "orange",
     description:
       " Node.js/Express backend API for an expense tracking application. Uses PostgreSQL with Knex.js for database management, and includes user authentication with JWT tokens and bcrypt password hashing. The API supports CRUD operations for expense tracking, user management, and list operations, with secure cookie-based authentication and image upload capabilities via Cloudinary integration.",
     tech: [
@@ -253,7 +356,7 @@ export const projects: Project[] = [
       { name: "Knex", icon: SiKnexdotjs },
       { name: "Cloudinary", icon: SiCloudinary },
     ],
-    date: "March 2025",
+    date: "Mar 2025",
     repositories: [
       {
         label: "Backend",
