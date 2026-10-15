@@ -1,120 +1,59 @@
+import Link from "next/link";
+import { ExternalLink } from "lucide-react";
+import { SiGithub } from "react-icons/si";
 import { Project } from "./projects";
+import { statusLabel, techArea } from "./brands";
 
-// Brand colors for tech logos; monochrome logos fall back to the text color.
-const brandMap: Record<string, string> = {
-  NestJS: "#E0234E",
-  TypeScript: "#3178C6",
-  JavaScript: "#E8C300",
-  "Node.js": "#339933",
-  PostgreSQL: "#4169E1",
-  "Cloudflare R2": "#F38020",
-  Excalidraw: "#6965DB",
-  TanStack: "#FF4154",
-  Zod: "#3E67B1",
-  React: "#149ECA",
-  Hono: "#E36002",
-  MySQL: "#4479A1",
-  SQLite: "#0F80CC",
-  Knex: "#E16426",
-  Docker: "#2496ED",
-  Redis: "#DC382D",
-  Cloudinary: "#3448C5",
-  Gemini: "#8E75FF",
-  MongoDB: "#47A248",
-  RabbitMQ: "#FF6600",
-  Vite: "#646CFF",
-  "Tailwind CSS": "#06B6D4",
-  Nginx: "#009639",
-  Swagger: "#85EA2D",
-  Jest: "#C21325",
-  "GitHub Actions": "#2088FF",
-  BullMQ: "#DC382D",
-  Vitest: "#6E9F18",
-};
+const MAX_TAGS = 4;
 
-const statusLabel: Record<string, string> = {
-  Development: "In development",
-  Production: "In production",
-  Stable: "Stable",
-};
-
-const MAX_CHIPS = 5;
-
-const ProjectCard = ({
-  title,
-  status,
-  summary,
-  impact,
-  tile,
-  description,
-  tech,
-  date,
-  repositories,
-  demo,
-  demoCredentials,
-}: Project) => {
-  const shown = tech.slice(0, MAX_CHIPS);
+const ProjectCard = ({ title, slug, area, status, summary, impact, tech, date, repositories, demo, headingLevel = 3 }: Project & { headingLevel?: 2 | 3 }) => {
+  const Heading = `h${headingLevel}` as const;
+  const shown = tech.slice(0, MAX_TAGS);
   const hidden = tech.length - shown.length;
 
   return (
-    <article className="proj spot" style={{ background: `var(--${tile})` }}>
-      <div className="top">
-        <span className={`badge${status === "Production" ? " live" : ""}`}>
-          {statusLabel[status] ?? status}
-        </span>
-        <span className="year">{date}</span>
+    <article className="card proj" data-hue={area}>
+      <div className="card-header">
+        <Heading className="card-title">
+          <Link href={`/projects/${slug}`}>{title}</Link>
+        </Heading>
+        <span className="when">{date}</span>
+        <p className="card-desc">{summary}</p>
       </div>
-      <h3>{title}</h3>
-      <p>{summary}</p>
-      <p className="impact">{impact}</p>
-
-      <div className="chips">
-        {shown.map(({ name, icon: Icon }) => (
-          <span className="chip" key={name}>
-            <Icon aria-hidden="true" style={{ color: brandMap[name] ?? "currentColor" }} />
-            {name}
-          </span>
-        ))}
-        {hidden > 0 && (
-          <span className="chip" title={tech.slice(MAX_CHIPS).map((t) => t.name).join(", ")}>
-            +{hidden}
-          </span>
-        )}
-      </div>
-
-      <details className="details">
-        <summary>Technical details</summary>
-        <p>{description.trim()}</p>
-      </details>
-
-      {demoCredentials && (
-        <div className="creds">
-          <span>
-            Demo login: <code>{demoCredentials.username}</code>
-          </span>
-          <span>
-            Password: <code>{demoCredentials.password}</code>
-          </span>
+      <div className="proj-body">
+        <span className="impact">{impact}</span>
+        <div className="tags">
+          {status === "Production" && (
+            <span className="badge">
+              <span className="dot" />
+              {statusLabel[status]}
+            </span>
+          )}
+          {status === "Development" && <span className="badge">{statusLabel[status]}</span>}
+          {shown.map((t) => (
+            <span className="badge badge-secondary" key={t.name} data-hue={techArea[t.name]}>
+              {t.name}
+            </span>
+          ))}
+          {hidden > 0 && <span className="badge badge-secondary">+{hidden}</span>}
         </div>
-      )}
-
-      <div className="acts">
+      </div>
+      <div className="card-footer">
         {demo && (
-          <a className="pill solid" href={demo} target="_blank" rel="noopener noreferrer">
-            Live demo ↗
+          <a className="btn btn-default btn-sm" href={demo} target="_blank" rel="noopener noreferrer">
+            <ExternalLink aria-hidden="true" />
+            Live demo
           </a>
         )}
-        {repositories?.map((repo) => (
-          <a
-            key={repo.url}
-            className="pill"
-            href={repo.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {repo.label === "Backend" ? "Back-end code" : "Code"}
+        {repositories?.slice(0, 1).map((repo) => (
+          <a key={repo.url} className="btn btn-outline btn-sm" href={repo.url} target="_blank" rel="noopener noreferrer">
+            <SiGithub aria-hidden="true" />
+            Source
           </a>
         ))}
+        <Link className="btn btn-ghost btn-sm" href={`/projects/${slug}`} aria-label={`Details about ${title}`}>
+          Details →
+        </Link>
       </div>
     </article>
   );

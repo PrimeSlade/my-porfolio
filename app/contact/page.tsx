@@ -1,20 +1,24 @@
-import type { Metadata } from "next";
+import PageHead from "../components/PageHead";
 import ContactPanel from "../components/ContactPanel";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Contact — Sai Zayar Hein",
-};
+export const metadata = pageMetadata({
+  title: "Contact",
+  description:
+    "Contact Sai Zayar Hein about back-end or full-stack roles and freelance projects. Based in Bangkok, open to on-site, hybrid or remote work.",
+  path: "/contact",
+});
 
-const ContactPage = () => {
-  return (
-    <main className="page-head">
-      <div className="sec-head">
-        <h1 className="page-title">Contact</h1>
-        <p>Email is the fastest way to reach me. I&apos;m based in Bangkok and work remotely.</p>
-      </div>
+const ContactPage = () => (
+  <>
+    <PageHead
+      title="Contact"
+      lede="Email is the fastest way to reach me. I'm based in Bangkok and open to on-site, hybrid or remote work."
+    />
+    <section>
       <ContactPanel />
-    </main>
-  );
-};
+    </section>
+  </>
+);
 
 export default ContactPage;

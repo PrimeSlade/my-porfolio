@@ -1,0 +1,29 @@
+export const metadata = {
+  title: "Post title",
+  description: "One or two sentences shown on the blog list, in search results and in link previews.",
+  date: "2026-10-15",
+  // updated: "2026-11-01", // add when you revise a published post
+  tags: ["Template"],
+  draft: true,
+};
+
+This is a template and is never listed (files starting with `_` are skipped). Copy it to `content/blog/your-post-slug.mdx`,
+edit the `metadata` block above, and remove `draft: true` when it is ready to publish.
+Drafts only show while running `pnpm dev`. The file name becomes the URL:
+`/blog/your-post-slug`.
+
+## What the metadata does
+
+- `title` and `description` are used for the page, search results and link previews.
+- `date` sorts the list, newest first.
+- `tags` show as badges on the blog list.
+
+## Formatting
+
+Write normal Markdown. Inline `code`, links, lists, tables and code blocks all work:
+
+```ts
+const feed = await redis.zrevrange(`feed:${userId}`, 0, 19);
+```
+
+> Quotes look like this.

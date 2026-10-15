@@ -1,31 +1,34 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import PageHead from "../components/PageHead";
+import PostList from "../components/blog/PostList";
+import { getPosts } from "@/lib/blog";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Blog — Sai Zayar Hein",
-};
+export const metadata = pageMetadata({
+  title: "Blog",
+  description:
+    "Writing by Sai Zayar Hein on software engineering, system design and back-end development.",
+  path: "/blog",
+});
 
-const BlogPage = () => {
+const BlogPage = async () => {
+  const posts = await getPosts();
+
   return (
-    <main className="page-head">
-      <div className="sec-head">
-        <h1 className="page-title">Writing</h1>
-        <p>Notes on software engineering, system design and back-end development.</p>
-      </div>
-      <div className="blog-empty">
-        <span className="status">
-          <span className="dot" />
-          Drafting the first post
-        </span>
-        <p>
-          Nothing published yet. I&apos;ll share what I learn building real systems:
-          designs that worked, mistakes I made, and how I fixed them.
-        </p>
-        <Link className="pill solid" href="/projects">
-          See my projects meanwhile
-        </Link>
-      </div>
-    </main>
+    <>
+      <PageHead
+        title="Blog"
+        lede="Notes on software engineering, system design and back-end development, from building real systems."
+      >
+        <div className="actions">
+          <a className="btn btn-outline btn-sm" href="/blog/rss.xml">
+            RSS feed
+          </a>
+        </div>
+      </PageHead>
+      <section>
+        <PostList posts={posts} headingLevel={2} />
+      </section>
+    </>
   );
 };
 

@@ -1,120 +1,71 @@
 import Link from "next/link";
-import { Mail } from "lucide-react";
+import { Download, GraduationCap, MapPin } from "lucide-react";
+import { SiGithub, SiLinkedin } from "react-icons/si";
 import StatCount from "./StatCount";
+import { site } from "@/lib/site";
 
-const NAME = "Sai Zayar Hein";
-
-const Hero = () => {
-  return (
-    <header>
-      <h1 className="hero-title" aria-label={NAME}>
-        {NAME.split("").map((c, i) => (
-          <span
-            key={i}
-            className="ch"
-            aria-hidden="true"
-            style={{ "--i": i } as React.CSSProperties}
-          >
-            {c === " " ? " " : c}
-          </span>
-        ))}
-      </h1>
-
-      <div className="bento">
-        <div className="tile intro">
-          <span className="status">
-            <span className="dot" />
-            Available for work
-          </span>
-          <p className="role">Full-stack software engineer</p>
-          <p>
-            I build web applications that businesses run on, from a point-of-sale
-            system used by a medical clinic to a real-time chat app. My strength is
-            the back end: the part that keeps data safe, fast and reliable.
-          </p>
-          <div className="facts">
-            <div>
-              <span>Based in</span>
-              <b>Bangkok · open to remote</b>
-            </div>
-            <div>
-              <span>Studying</span>
-              <b>B.Sc. Computer Science, KMUTT</b>
-            </div>
-            <div>
-              <span>Main tools</span>
-              <b>TypeScript, Java, React</b>
-            </div>
-          </div>
-          <div className="ctas">
-            <Link className="pill solid" href="/projects">
-              See my work
-            </Link>
-            <Link className="pill" href="/contact">
-              Get in touch
-            </Link>
-          </div>
-        </div>
-
-        <div className="tile feature spot">
-          <div className="notch">
-            <Link className="pill accent" href="/contact">
-              Contact me
-            </Link>
-            <a
-              className="pill accent icon-btn"
-              href="mailto:saib6064@gmail.com"
-              aria-label="Email me"
-            >
-              <Mail size={18} />
-            </a>
-          </div>
-          <div className="tag">
-            <strong>#In production</strong>
-            <small>Used daily by a real clinic since July 2025</small>
-          </div>
-          <h2>Medical Clinic POS</h2>
-          <p>
-            A system that runs a clinic&apos;s front desk and pharmacy: patient
-            records, treatments, medicine stock, invoices and reports, across any
-            number of branches.
-          </p>
-          <a
-            className="more"
-            href="https://medpos.primeslade.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Try the live demo ↗
-          </a>
-        </div>
-
-        <div className="stats">
-          <div className="stat">
-            <b>
-              <StatCount value={9} />
-              <em>+</em>
-            </b>
-            <span>Projects built and shipped</span>
-          </div>
-          <div className="stat">
-            <b>
-              <StatCount value={40} />
-              <em>+</em>
-            </b>
-            <span>Students mentored in back-end development</span>
-          </div>
-          <div className="stat">
-            <b>
-              <StatCount value={99.9} decimals={1} />
-              <em>%</em>
-            </b>
-            <span>Message delivery rate in Slade Chat</span>
-          </div>
-        </div>
+const Hero = () => (
+  <>
+    <div className="hero">
+      <span className="badge">
+        <span className="dot" />
+        Available for work
+      </span>
+      <h1>{site.name}</h1>
+      <p className="role">{site.role}</p>
+      <p className="lede">
+        I build web applications that businesses run on, from a point-of-sale system used daily by a
+        medical clinic to a real-time chat app. My strength is the back end: the part that keeps data
+        safe, fast and reliable.
+      </p>
+      <div className="meta">
+        <span>
+          <MapPin aria-hidden="true" />
+          Bangkok · open to {site.workModes}
+        </span>
+        <span>
+          <GraduationCap aria-hidden="true" />
+          B.Sc. Computer Science, KMUTT
+        </span>
       </div>
-    </header>
-  );
-};
+      <div className="actions">
+        <Link className="btn btn-default" href="/projects">
+          See my work
+        </Link>
+        <a className="btn btn-outline" href="/resume.pdf" download>
+          <Download aria-hidden="true" />
+          Résumé
+        </a>
+        <a className="btn btn-ghost btn-icon" href={site.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <SiGithub aria-hidden="true" />
+        </a>
+        <a className="btn btn-ghost btn-icon" href={site.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <SiLinkedin aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+
+    <div className="stats boxed">
+      <div className="card">
+        <p className="card-desc">Projects shipped</p>
+        <p className="num">
+          <StatCount value={9} />+
+        </p>
+      </div>
+      <div className="card">
+        <p className="card-desc">Students mentored</p>
+        <p className="num">
+          <StatCount value={40} />+
+        </p>
+      </div>
+      <div className="card">
+        <p className="card-desc">Message delivery in Slade Chat</p>
+        <p className="num">
+          <StatCount value={99.9} decimals={1} />%
+        </p>
+      </div>
+    </div>
+  </>
+);
 
 export default Hero;

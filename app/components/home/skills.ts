@@ -40,8 +40,8 @@ export type Skill = {
 export const skillCategories: { id: SkillCategory | "all"; label: string }[] = [
   { id: "all", label: "All" },
   { id: "lang", label: "Languages" },
-  { id: "web", label: "Websites & apps" },
-  { id: "api", label: "Servers & APIs" },
+  { id: "web", label: "Frontend" },
+  { id: "api", label: "Backend" },
   { id: "db", label: "Databases" },
   { id: "ops", label: "Cloud" },
 ];

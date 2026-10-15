@@ -1,24 +1,66 @@
 import type { Metadata, Viewport } from "next";
-import { Anton, Figtree } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/NavBar/Navbar";
-import PointerEffects from "./components/PointerEffects";
+import SiteHeader from "./components/SiteHeader";
+import SiteFooter from "./components/SiteFooter";
+import BackgroundEffects from "./components/BackgroundEffects";
+import { site } from "@/lib/site";
 
-const anton = Anton({
-  variable: "--font-anton",
-  weight: "400",
-  subsets: ["latin"],
-});
-
-const figtree = Figtree({
-  variable: "--font-figtree",
-  subsets: ["latin"],
-});
+const geist = Geist({ variable: "--font-geist", subsets: ["latin"] });
+const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Sai Zayar Hein — PrimeSlade",
-  description:
-    "Sai Zayar Hein, full-stack software engineer in Bangkok. I build web apps businesses rely on, with a focus on reliable back ends.",
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} · ${site.role}`,
+    template: `%s · ${site.name}`,
+  },
+  description: site.description,
+  applicationName: site.name,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  keywords: [
+    "Sai Zayar Hein",
+    "PrimeSlade",
+    "full-stack developer",
+    "back-end engineer",
+    "software engineer Bangkok",
+    "Node.js",
+    "NestJS",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "PostgreSQL",
+  ],
+  alternates: {
+    canonical: "/",
+    types: { "application/rss+xml": [{ url: "/blog/rss.xml", title: `${site.name} · Blog` }] },
+  },
+  openGraph: {
+    type: "website",
+    siteName: site.name,
+    locale: "en_US",
+    url: "/",
+    title: `${site.name} · ${site.role}`,
+    description: site.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} · ${site.role}`,
+    description: site.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+  // set these in Vercel after adding the site to Google Search Console / Bing Webmaster Tools
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION && {
+      other: { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION },
+    }),
+  },
   icons: {
     icon: [
       { url: "/icon0.svg?v=3", type: "image/svg+xml" },
@@ -30,29 +72,30 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#edf0f4" },
-    { media: "(prefers-color-scheme: dark)", color: "#12151b" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
   ],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+// Applies a saved light/dark choice before first paint so the page never flashes the wrong theme.
+const themeScript = `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${anton.variable} ${figtree.variable}`}>
+    <html lang="en" className={`${geist.variable} ${geistMono.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
-        <div className="progress" aria-hidden="true" />
-        <PointerEffects />
-        <Navbar />
-        <div className="wrap">
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
+        <BackgroundEffects />
+        <SiteHeader />
+        <main id="main" className="container frame">
           {children}
-          <footer className="site-footer">
-            <span>© {new Date().getFullYear()} Sai Zayar Hein</span>
-            <span>Bangkok · Remote</span>
-          </footer>
-        </div>
+        </main>
+        <SiteFooter />
       </body>
     </html>
   );
