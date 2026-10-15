@@ -9,21 +9,21 @@ export type ExperienceItem = {
 export const experience: ExperienceItem[] = [
   {
     when: "Jul 2025 – Present",
-    title: "Full-Stack Engineer",
+    title: "Full Stack Engineer",
     org: "Freelance · Bangkok",
     points: [
-      "Built a management system for a multi-branch medical clinic with 15+ connected data types.",
-      "Added live medicine stock tracking, automatic invoices and Excel import/export.",
-      "Delivered the production point-of-sale screens, with role-based access and PDF invoices.",
+      "Built MedPost, a management and point-of-sale system for a multi-branch medical clinic and pharmacy, using React, Express and PostgreSQL.",
+      "Designed a database of 15+ interconnected entities with attribute-based access control (ABAC) across clinic and pharmacy branches.",
+      "Enabled real-time inventory tracking across 9 medicine types, with automated invoicing, PDF invoices and Excel import/export.",
     ],
   },
   {
-    when: "Jan 2026 – Jul 2026",
-    title: "Back-End Web Development Mentor",
-    org: "KMUTT Computer Science Program",
+    when: "Jan 2026 – May 2026",
+    title: "Web Development Mentor",
+    org: "SIT-KMUTT · Part-time · Bangkok",
     points: [
-      "Mentored 40+ students in Node.js and Express.",
-      "Taught how to build, test and deploy REST APIs.",
+      "Taught Node.js and Express to 40+ students, covering REST APIs.",
+      "Reviewed student projects and helped debug their code, resolving backend issues.",
     ],
   },
   {
